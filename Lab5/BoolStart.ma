@@ -1,2860 +1,2059 @@
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark"  data-a11y-animated-images="system" data-a11y-link-underlines="false">
-
-    <style>
-  /* for each iteration, uncomment the CSS variable */
-
-  /* light themes */
-  [data-color-mode="light"][data-light-theme*="light"],
-  [data-color-mode="auto"][data-light-theme*="light"] {
-    /* iteration 1 */
-    --border-color-iteration-1: #C8CCD0;
-    /* iteration 2 */
-    --border-color-iteration-2: #BABFC5;
-    /* iteration 3 */
-    /* --border-color-iteration-3: #A6ADB4; */
-    /* iteration final */
-    /* --border-color-iteration-4: #868F99; */
-
-    /* the first value is the final step, which falls back to previous iterations */
-    --control-borderColor-rest: var(--border-color-iteration-4, var(--border-color-iteration-3, var(--border-color-iteration-2, var(--border-color-iteration-1)))) !important;
-  }
-
-  /* dark themes */
-  [data-color-mode="dark"][data-dark-theme*="dark"],
-  [data-color-mode="auto"][data-light-theme*="dark"] {
-    /* iteration 1 */
-    --border-color-iteration-1: #363940;
-    /* iteration 2 */
-    --border-color-iteration-2: #3F434B;
-    /* iteration 3 */
-    /* --border-color-iteration-3: #4B5159; */
-    /* iteration final */
-    /* --border-color-iteration-4: #666E79; */
-
-    /* the first value is the final step, which falls back to previous iterations */
-    --control-borderColor-rest: var(--border-color-iteration-4, var(--border-color-iteration-3, var(--border-color-iteration-2, var(--border-color-iteration-1)))) !important;
-  }
-
-  [data-color-mode="dark"][data-dark-theme="dark_dimmed"],
-  [data-color-mode="dark"][data-dark-theme="light_high_contrast"],
-  [data-color-mode="dark"][data-dark-theme="dark_high_contrast"],
-  [data-color-mode="light"][data-light-theme="dark_dimmed"],
-  [data-color-mode="light"][data-light-theme="light_high_contrast"],
-  [data-color-mode="light"][data-light-theme="dark_high_contrast"] {
-    /* skip these themes, use the fallback */
-    --control-borderColor-rest: initial !important;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    /* dark colors in dark mode */
-    [data-color-mode="auto"][data-dark-theme*="dark"] {
-      /* iteration 1 */
-      --border-color-iteration-1: #363940;
-      /* iteration 2 */
-      --border-color-iteration-2: #3F434B;
-      /* iteration 3 */
-      /* --border-color-iteration-3: #4B5159; */
-      /* iteration final */
-      /* --border-color-iteration-4: #666E79; */
-
-      /* the first value is the final step, which falls back to previous iterations */
-      --control-borderColor-rest: var(--border-color-iteration-4, var(--border-color-iteration-3, var(--border-color-iteration-2, var(--border-color-iteration-1)))) !important;
-    }
-
-    /* light colors in dark mode */
-    [data-color-mode="auto"][data-dark-theme*="light"] {
-      /* iteration 1 */
-      --border-color-iteration-1: #C8CCD0;
-      /* iteration 2 */
-      --border-color-iteration-2: #BABFC5;
-      /* iteration 3 */
-      /* --border-color-iteration-3: #A6ADB4; */
-      /* iteration final */
-      /* --border-color-iteration-4: #868F99; */
-
-      /* the first value is the final step, which falls back to previous iterations */
-      --control-borderColor-rest: var(--border-color-iteration-4, var(--border-color-iteration-3, var(--border-color-iteration-2, var(--border-color-iteration-1)))) !important;
-      }
-
-    [data-color-mode="auto"][data-dark-theme="dark_dimmed"],
-    [data-color-mode="auto"][data-dark-theme="light_high_contrast"],
-    [data-color-mode="auto"][data-dark-theme="dark_high_contrast"] {
-      /* skip these themes, use the fallback */
-      --control-borderColor-rest: initial !important;
-    }
-  }
-
-  @media (prefers-color-scheme: light) {
-    /* dark colors in light mode */
-    [data-color-mode="auto"][data-light-theme*="dark"] {
-      /* iteration 1 */
-      --border-color-iteration-1: #363940;
-      /* iteration 2 */
-      --border-color-iteration-2: #3F434B;
-      /* iteration 3 */
-      /* --border-color-iteration-3: #4B5159; */
-      /* iteration final */
-      /* --border-color-iteration-4: #666E79; */
-
-      /* the first value is the final step, which falls back to previous iterations */
-      --control-borderColor-rest: var(--border-color-iteration-4, var(--border-color-iteration-3, var(--border-color-iteration-2, var(--border-color-iteration-1)))) !important;
-    }
-
-    /* light colors in light mode */
-    [data-color-mode="auto"][data-light-theme*="light"] {
-      /* iteration 1 */
-      --border-color-iteration-1: #C8CCD0;
-      /* iteration 2 */
-      --border-color-iteration-2: #BABFC5;
-      /* iteration 3 */
-      /* --border-color-iteration-3: #A6ADB4; */
-      /* iteration final */
-      /* --border-color-iteration-4: #868F99; */
-
-      /* the first value is the final step, which falls back to previous iterations */
-      --control-borderColor-rest: var(--border-color-iteration-4, var(--border-color-iteration-3, var(--border-color-iteration-2, var(--border-color-iteration-1)))) !important;
-    }
-
-    [data-color-mode="auto"][data-light-theme="dark_dimmed"],
-    [data-color-mode="auto"][data-light-theme="light_high_contrast"],
-    [data-color-mode="auto"][data-light-theme="dark_high_contrast"] {
-      /* skip these themes, use the fallback */
-      --control-borderColor-rest: initial !important;
-    }
-  }
-</style>
-
-
-  <head>
-    <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://github.githubassets.com">
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
-  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
-  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
-  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
-  <link rel="preconnect" href="https://avatars.githubusercontent.com">
-
-  
-
-
-  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark-5d486a4ede8e.css" /><link data-color-theme="light" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light-a09cef873428.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-27c8d635e4e5.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-8438e75afd36.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-bf5665b96628.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-c414b5ba1dce.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-e5868b7374db.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-299ac9c64ec0.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-3a26e78ad0ff.css" />
-  
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-primitives-6143c8f97ed1.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-d1f40f84ba6b.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-dfd05fba5c39.css" />
-    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-dcbb690920ca.css" />
-  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/code-325020517864.css" />
-
-  
-
-  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["copilot_conversational_ux_direct_connection","failbot_handle_non_errors","geojson_azure_maps","hovercard_show_on_focus","image_metric_tracking","turbo_experiment_risky","sample_network_conn_type","star_button_focus"]}</script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-00ddd1398fcd.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_dompurify_dist_purify_js-64d590970fa6.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_stacktrace-parser_dist_stack-trace-parser_esm_js-node_modules_github_bro-a4c183-18bf85b8e9f4.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_soft-nav_soft-nav_ts-56133143b228.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/environment-c4959a8131a6.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_selector-observer_dist_index_esm_js-2646a2c533e3.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_focus-zone_js-d55308df5023.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_relative-time-element_dist_index_js-99e288659d4f.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_fzy_js_index_js-node_modules_github_combobox-nav_dist_index_js-node_modu-344bff-91b70bb50d68.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_auto-complete-element-81d69b-f766607dc0c8.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_filter-input-element_dist_index_js-node_modules_github_remote-inp-2e8678-d593bf262480.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_primer_view-co-70ad06-590eabf75ee5.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/github-elements-6312d457aad7.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-e3d0b1e6097b.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_lit-html_lit-html_js-4ccebb6ebf7d.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_github_alive-client_dist-bf5aa2-504c8d53fb8e.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_morphdom_dist_morphdom-esm_js-b1fdd7158cf0.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_turbo_dist_turbo_es2017-esm_js-9a3541181451.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_remote-form_dist_index_js-node_modules_scroll-anchoring_dist_scro-52dc4b-e1e33bfc0b7e.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_color-convert_index_js-35b3ae68c408.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_dimensions_js-node_modules_github_jtml_lib_index_js-a18147cea3a6.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_paste-markdown_dist_index_esm_js-node_modules_github_quote-select-581a1f-4a3074d34892.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_details-dialog_ts-app_assets_modules_github_fetch_ts-481c493af259.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_updatable-content_ts-ui_packages_hydro-analytics_hydro-analytics_ts-e4da304b75e7.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_onfocus_ts-app_assets_modules_github_sticky-scroll-into-view_ts-c56a5dfc8975.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_task-list_ts-app_assets_modules_github_sso_ts-ui_packages-7d50ad-9491f2be61ee.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_ajax-error_ts-app_assets_modules_github_behaviors_include-2e2258-d77f85c54572.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_commenting_edit_ts-app_assets_modules_github_behaviors_ht-83c235-f22ac6b94445.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-e3061ca0f22f.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_catalyst_lib_index_js-623425af41e1.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/notifications-global-0104a8043aa4.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/code-menu-6bd50a0647d6.js"></script>
-  
-  <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/react-lib-210c4b5934c3.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_octicons-react_dist_index_esm_js-node_modules_primer_react_lib-es-3db9ab-5f4faa9f1811.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Box_Box_js-96a44addc402.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Button_Button_js-node_modules_primer_react_lib-esm_-f6da63-1976b80d3486.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Truncate_Truncate_js-node_modules_primer_react_lib--5d1957-92534314547a.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Button_index_js-node_modules_primer_react_lib-esm_O-279bf8-c9a61955d545.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Text_Text_js-node_modules_primer_react_lib-esm_Text-85a14b-0f28951279b7.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ActionList_index_js-535c8ee1ebe8.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ActionMenu_ActionMenu_js-2f08ef908241.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_scroll-into-view_js-node_modules_primer_react_-04bb1b-a6096689d2d5.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_FormControl_FormControl_js-9b048a5a5ceb.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_react-router-dom_dist_index_js-4a785319b497.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_PageLayout_PageLayout_js-node_modules_github_hydro--f8521d-3f6cf7a0555b.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Flash_Flash_js-node_modules_primer_react_lib-esm_Un-980de7-1b835b3f3795.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_TreeView_TreeView_js-c09c91ae060c.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_BranchName_BranchName_js-node_modules_primer_react_-ad41d8-236c4853de89.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_AvatarStack_AvatarStack_js-node_modules_primer_reac-7de3e7-93120945f606.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Checkbox_Checkbox_js-node_modules_primer_react_lib--d59a1c-a38d3be06ba0.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_create-browser-history_ts-ui_packages_react-core_deferred-registry_ts--ebbb92-1ee1e572fd0e.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_register-app_ts-27af609bee6a.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_ref-selector_RefSelector_tsx-5bd03690d56c.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_trusted-types-policies_policy_ts-ui_packages_trusted-types_trusted-types_ts-ui_pa-54d421-0c0af062de1b.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_blob-anchor_ts-app_assets_modules_github_filter-sort_ts-app_assets_-e50ab6-aa83041d179a.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_alive_alive_ts-ui_packages_alive_connect-alive-subscription_ts-app_assets_modules-face4e-820b5dcb088b.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/react-code-view-2e8166795382.js"></script>
-
-
-  <title>File not found</title>
-
-
-
-  <meta name="route-pattern" content="/:user_id/:repository/blob/*name(/*path)">
-
-    
-  <meta name="current-catalog-service-hash" content="82c569b93da5c18ed649ebd4c2c79437db4611a6a1373e805a3cb001c64130b7">
-
-
-  <meta name="request-id" content="0E67:6B6A:45CD2D:6748E7:651ED93F" data-turbo-transient="true" /><meta name="html-safe-nonce" content="2dba9505b6eb0d377fae346779d353b3195f7388f67a24028f10a98a04ec7e32" data-turbo-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9hbnRob255cm9tcmVsbC8zREVzc2VudGlhbHNSZXNvdXJjZXMvYmxvYi9tYXN0ZXIvTWF5YS9zY2VuZXMvUmVUb3BvL0Jvb2xTdGFydC5tYSIsInJlcXVlc3RfaWQiOiIwRTY3OjZCNkE6NDVDRDJEOjY3NDhFNzo2NTFFRDkzRiIsInZpc2l0b3JfaWQiOiI4MTc4MTk5ODM4Nzg0NDY1MDg0IiwicmVnaW9uX2VkZ2UiOiJpYWQiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-turbo-transient="true" /><meta name="visitor-hmac" content="66a4416c89c14b134a7a32f5f055c055f263c106651ab2cb8e3cfb830c2fdc80" data-turbo-transient="true" />
-
-
-    <meta name="hovercard-subject-tag" content="repository:20030975" data-turbo-transient>
-
-
-  <meta name="github-keyboard-shortcuts" content="repository,source-code,file-tree" data-turbo-transient="true" />
-  
-
-  <meta name="selected-link" value="repo_source" data-turbo-transient>
-  <link rel="assets" href="https://github.githubassets.com/">
-
-    <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
-  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
-  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
-  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
-  <meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I">
-
-<meta name="octolytics-url" content="https://collector.github.com/github/collect" /><meta name="octolytics-actor-id" content="143127190" /><meta name="octolytics-actor-login" content="SnortingBaguette" /><meta name="octolytics-actor-hash" content="b4a085fc595ff8c2346eb360fc57add463c0e2eb68183bae04c92154bb71d63f" />
-
-  <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-turbo-transient="true" />
-
-  
-
-
-
-
-  
-
-    <meta name="user-login" content="SnortingBaguette">
-
-  <link rel="sudo-modal" href="/sessions/sudo_modal">
-
-    <meta name="viewport" content="width=device-width">
-    
-      <meta name="description" content="Recourse files for my 3D Essentials class at UVU. Contribute to anthonyromrell/3DEssentialsResources development by creating an account on GitHub.">
-      <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
-    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
-    <meta property="fb:app_id" content="1401488693436528">
-    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/anthonyromrell/3DEssentialsResources/blob/master/Maya/scenes/ReTopo/undefined" />
-      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/b7d24731f8d8c9d08288b4158f07fd83e7da7b279220bb6cf32a68ba9f51371d/anthonyromrell/3DEssentialsResources" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="File not found · anthonyromrell/3DEssentialsResources" /><meta name="twitter:description" content="Recourse files for my 3D Essentials class at UVU. Contribute to anthonyromrell/3DEssentialsResources development by creating an account on GitHub." />
-      <meta property="og:image" content="https://opengraph.githubassets.com/b7d24731f8d8c9d08288b4158f07fd83e7da7b279220bb6cf32a68ba9f51371d/anthonyromrell/3DEssentialsResources" /><meta property="og:image:alt" content="Recourse files for my 3D Essentials class at UVU. Contribute to anthonyromrell/3DEssentialsResources development by creating an account on GitHub." /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="File not found · anthonyromrell/3DEssentialsResources" /><meta property="og:url" content="https://github.com/anthonyromrell/3DEssentialsResources" /><meta property="og:description" content="Recourse files for my 3D Essentials class at UVU. Contribute to anthonyromrell/3DEssentialsResources development by creating an account on GitHub." />
-      
-
-      <link rel="shared-web-socket" href="wss://alive.github.com/_sockets/u/143127190/ws?session=eyJ2IjoiVjMiLCJ1IjoxNDMxMjcxOTAsInMiOjExODYzOTUxNzEsImMiOjM1ODg0MDg5ODgsInQiOjE2OTY1MjA1MTR9--75acb52ded7a445834840fc3d65656f6fbd89c173f72bf5acbb990d34b7fb61d" data-refresh-url="/_alive" data-session-id="1744df50d2f4be77ac49d55c605ec32e732959b5e2dc262e07e8bf287000db8d">
-      <link rel="shared-web-socket-src" href="/assets-cdn/worker/socket-worker-cee473359cfe.js">
-
-
-        <meta name="hostname" content="github.com">
-
-
-      <meta name="keyboard-shortcuts-preference" content="all">
-
-        <meta name="expected-hostname" content="github.com">
-
-
-  <meta http-equiv="x-pjax-version" content="23bdd73cddd05636e555a12cc7c187f16bd6dede888d501bded3a820bdf84d83" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-csp-version" content="ee14a7165914197d62e19f664bfb961fcfdfc1ec31939a5c7b137fbab1751c87" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-css-version" content="04e174dcb21c4cd7345763da85298caf51b4ff777d9f266efa14067d54fb4eec" data-turbo-track="reload">
-  <meta http-equiv="x-pjax-js-version" content="407d439d6bac49f5da6879bbbdce032134e1c250609269d8d1a153bb6bf2edda" data-turbo-track="reload">
-
-  <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
-
-      <meta name="turbo-cache-control" content="no-cache" data-turbo-transient>
-    <meta data-hydrostats="publish">
-
-  <meta name="go-import" content="github.com/anthonyromrell/3DEssentialsResources git https://github.com/anthonyromrell/3DEssentialsResources.git">
-
-  <meta name="octolytics-dimension-user_id" content="3533468" /><meta name="octolytics-dimension-user_login" content="anthonyromrell" /><meta name="octolytics-dimension-repository_id" content="20030975" /><meta name="octolytics-dimension-repository_nwo" content="anthonyromrell/3DEssentialsResources" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="20030975" /><meta name="octolytics-dimension-repository_network_root_nwo" content="anthonyromrell/3DEssentialsResources" />
-
-
-
-  <meta name="turbo-body-classes" content="logged-in env-production page-responsive">
-
-
-  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
-
-  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
-
-  <meta name="browser-optimizely-client-errors-url" content="https://api.github.com/_private/browser/optimizely_client/errors">
-
-  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
-  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
-  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
-
-<meta name="theme-color" content="#1e2327">
-<meta name="color-scheme" content="dark light" />
-
-
-  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
-
-  </head>
-
-  <body class="logged-in env-production page-responsive" style="word-wrap: break-word;">
-    <div data-turbo-body class="logged-in env-production page-responsive" style="word-wrap: break-word;">
-      
-
-
-    <div class="position-relative js-header-wrapper ">
-      <a href="#start-of-content" class="p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
-      <span data-view-component="true" class="progress-pjax-loader Progress position-fixed width-full">
-    <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
-</span>      
-      
-
-
-      
-
-        <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_allex_crc32_lib_crc32_esm_js-node_modules_github_mini-throttle_dist_deco-b38cad-602b62a2ec65.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_clipboard-copy-element_dist_index_esm_js-node_modules_delegated-e-b37f7d-a9177ba414f2.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_command-palette_items_help-item_ts-app_assets_modules_github_comman-48ad9d-d8af9034fc8b.js"></script>
-<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/command-palette-342a472a4c54.js"></script>
-
-            <header class="AppHeader">
-    
-
-    <div class="AppHeader-globalBar pb-2 js-global-bar">
-      <div class="AppHeader-globalBar-start">
-          <deferred-side-panel data-url="/_side-panels/global">
-  <include-fragment data-target="deferred-side-panel.fragment">
-      
-  <button aria-label="Open global navigation menu" data-action="click:deferred-side-panel#loadPanel click:deferred-side-panel#panelOpened" data-show-dialog-id="dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece" id="dialog-show-dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button color-bg-transparent p-0 color-fg-muted">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-three-bars Button-visual">
-    <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
-</svg>
-</button>  
-
-<div class="Overlay--hidden Overlay-backdrop--side Overlay-backdrop--placement-left" data-modal-dialog-overlay>
-  <modal-dialog data-target="deferred-side-panel.panel" role="dialog" id="dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece" aria-modal="true" aria-disabled="true" aria-labelledby="dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece-title" aria-describedby="dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait Overlay--motion-scaleFade SidePanel">
-    <div styles="flex-direction: row;" data-view-component="true" class="Overlay-header">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title sr-only" id="dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece-title">
-        Global navigation
-      </h1>
-            <div data-view-component="true" class="d-flex">
-      <div data-view-component="true" class="AppHeader-logo position-relative">
-        <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
-    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-</svg>
-</div></div>
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="dialog-10410e3d-6c37-4c6d-909e-67a22ec6dece" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-</div>
-      <div data-view-component="true" class="Overlay-body d-flex flex-column height-full px-2">      <nav aria-label="Site navigation" data-view-component="true" class="ActionList">
-  
-  <nav-list>
-    <ul data-view-component="true" class="ActionListWrap">
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-hotkey="g d" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;HOME&quot;,&quot;label&quot;:null}" id="item-4226a89a-9b95-4e20-82ca-f3c6c77d3328" href="/dashboard" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-home">
-    <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Home
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;ISSUES&quot;,&quot;label&quot;:null}" id="item-f09f8ff9-2eeb-4028-b095-660862558b1f" href="/issues" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened">
-    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Issues
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PULL_REQUESTS&quot;,&quot;label&quot;:null}" id="item-a25dccf7-9131-4150-8a87-f7a0de565ca6" href="/pulls" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request">
-    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Pull requests
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;DISCUSSIONS&quot;,&quot;label&quot;:null}" id="item-906107dd-8f6a-4402-b35e-e9c14d9d2223" href="/discussions" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion">
-    <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Discussions
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;CODESPACES&quot;,&quot;label&quot;:null}" id="item-5018891d-05b8-4ac2-98bd-f4802e5cb445" href="https://github.com/codespaces" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
-    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Codespaces
-</span></a>
-  
-  
-</li>
-
-        
-          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;EXPLORE&quot;,&quot;label&quot;:null}" id="item-dedfdd9b-62e0-40d0-9f7f-661fa5e26507" href="/explore" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-telescope">
-    <path d="M14.184 1.143v-.001l1.422 2.464a1.75 1.75 0 0 1-.757 2.451L3.104 11.713a1.75 1.75 0 0 1-2.275-.702l-.447-.775a1.75 1.75 0 0 1 .53-2.32L11.682.573a1.748 1.748 0 0 1 2.502.57Zm-4.709 9.32h-.001l2.644 3.863a.75.75 0 1 1-1.238.848l-1.881-2.75v2.826a.75.75 0 0 1-1.5 0v-2.826l-1.881 2.75a.75.75 0 1 1-1.238-.848l2.049-2.992a.746.746 0 0 1 .293-.253l1.809-.87a.749.749 0 0 1 .944.252ZM9.436 3.92h-.001l-4.97 3.39.942 1.63 5.42-2.61Zm3.091-2.108h.001l-1.85 1.26 1.505 2.605 2.016-.97a.247.247 0 0 0 .13-.151.247.247 0 0 0-.022-.199l-1.422-2.464a.253.253 0 0 0-.161-.119.254.254 0 0 0-.197.038ZM1.756 9.157a.25.25 0 0 0-.075.33l.447.775a.25.25 0 0 0 .325.1l1.598-.769-.83-1.436-1.465 1Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Explore
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;MARKETPLACE&quot;,&quot;label&quot;:null}" id="item-247b92be-8654-4276-9fd2-4717a81a0050" href="/marketplace" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gift">
-    <path d="M2 2.75A2.75 2.75 0 0 1 4.75 0c.983 0 1.873.42 2.57 1.232.268.318.497.668.68 1.042.183-.375.411-.725.68-1.044C9.376.42 10.266 0 11.25 0a2.75 2.75 0 0 1 2.45 4h.55c.966 0 1.75.784 1.75 1.75v2c0 .698-.409 1.301-1 1.582v4.918A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V9.332C.409 9.05 0 8.448 0 7.75v-2C0 4.784.784 4 1.75 4h.55c-.192-.375-.3-.8-.3-1.25ZM7.25 9.5H2.5v4.75c0 .138.112.25.25.25h4.5Zm1.5 0v5h4.5a.25.25 0 0 0 .25-.25V9.5Zm0-4V8h5.5a.25.25 0 0 0 .25-.25v-2a.25.25 0 0 0-.25-.25Zm-7 0a.25.25 0 0 0-.25.25v2c0 .138.112.25.25.25h5.5V5.5h-5.5Zm3-4a1.25 1.25 0 0 0 0 2.5h2.309c-.233-.818-.542-1.401-.878-1.793-.43-.502-.915-.707-1.431-.707ZM8.941 4h2.309a1.25 1.25 0 0 0 0-2.5c-.516 0-1 .205-1.43.707-.337.392-.646.975-.879 1.793Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Marketplace
-</span></a>
-  
-  
-</li>
-
-</ul>  </nav-list>
-</nav>
-
-      <div data-view-component="true" class="my-3 d-flex flex-justify-center height-full">
-        <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-</svg>
-</div>
-</div>
-      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd d-block pt-0">      <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider mt-0 mb-1"></li>
-
-        <nav aria-label="Additional navigation" data-view-component="true" class="ActionList px-0 flex-1">
-  
-  <nav-list>
-    <ul data-view-component="true" class="ActionListWrap">
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;FEEDBACK&quot;,&quot;label&quot;:null}" id="item-7ace78b5-5e21-41df-91fe-a12fccabb092" href="https://gh.io/navigation-update" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion">
-    <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Give new navigation feedback
-</span>        <span class="ActionListItem-visual ActionListItem-visual--trailing">
-          <span title="Beta" data-view-component="true" class="Counter color-bg-default color-border-success-emphasis color-fg-success">Beta</span>
-        </span>
-</a>
-  
-  
-</li>
-
-</ul>  </nav-list>
-</nav>
-
-      <div data-view-component="true" class="px-2">      <p class="color-fg-subtle text-small text-light">&copy; 2023 GitHub, Inc.</p>
-
-      <div data-view-component="true" class="d-flex text-small text-light">
-          <a target="_blank" href="/about" data-view-component="true" class="Link mr-2">About</a>
-          <a target="_blank" href="https://github.blog" data-view-component="true" class="Link mr-2">Blog</a>
-          <a target="_blank" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true" class="Link mr-2">Terms</a>
-          <a target="_blank" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true" class="Link mr-2">Privacy</a>
-          <a target="_blank" href="/security" data-view-component="true" class="Link mr-2">Security</a>
-        <a target="_blank" href="https://www.githubstatus.com/" data-view-component="true" class="Link mr-3">Status</a>
-</div></div>
-</div>
-</modal-dialog></div>
-
-  </include-fragment>
-</deferred-side-panel>
-
-        <a
-          class="AppHeader-logo ml-2"
-          href="https://github.com/"
-          data-hotkey="g d"
-          aria-label="Homepage "
-          data-turbo="false"
-          data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"
-        >
-          <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle color-fg-default">
-    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-</svg>
-        </a>
-
-          <div class="AppHeader-context" >
-  <div class="AppHeader-context-compact">
-        <button aria-expanded="false" aria-haspopup="dialog" aria-label="Page context: anthonyromrell / 3DEssentialsResources" id="dialog-show-context-region-dialog" data-show-dialog-id="context-region-dialog" type="button" data-view-component="true" class="AppHeader-context-compact-trigger Truncate Button--secondary Button--medium Button box-shadow-none">    <span class="Button-content">
-      <span class="Button-label"><span class="AppHeader-context-compact-lead">
-                <span class="AppHeader-context-compact-parentItem">anthonyromrell</span>
-                <span class="AppHeader-context-compact-separator">&nbsp;/</span>
-
-            </span>
-
-            <strong class="AppHeader-context-compact-mainItem d-flex flex-items-center Truncate" >
-  <span class="Truncate-text ">3DEssentialsResources</span>
-
-</strong></span>
-    </span>
-</button>  
-
-<div class="Overlay--hidden Overlay-backdrop--center" data-modal-dialog-overlay>
-  <modal-dialog role="dialog" id="context-region-dialog" aria-modal="true" aria-disabled="true" aria-labelledby="context-region-dialog-title" aria-describedby="context-region-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
-    <div data-view-component="true" class="Overlay-header">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title " id="context-region-dialog-title">
-        Navigate back to
-      </h1>
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="context-region-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-</div>
-      <div data-view-component="true" class="Overlay-body">          <ul role="list" class="list-style-none" >
-    <li>
-      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;anthonyromrell&quot;,&quot;screen_size&quot;:&quot;compact&quot;}" href="/anthonyromrell" data-view-component="true" class="Link--primary Truncate d-flex flex-items-center py-1">
-        <span class="AppHeader-context-item-label Truncate-text ">
-            <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-person mr-1">
-    <path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
-</svg>
-
-          anthonyromrell
-        </span>
-
-</a>
-    </li>
-    <li>
-      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;3DEssentialsResources&quot;,&quot;screen_size&quot;:&quot;compact&quot;}" href="/anthonyromrell/3DEssentialsResources" data-view-component="true" class="Link--primary Truncate d-flex flex-items-center py-1">
-        <span class="AppHeader-context-item-label Truncate-text ">
-            <svg aria-hidden="true" height="12" viewBox="0 0 16 16" version="1.1" width="12" data-view-component="true" class="octicon octicon-repo mr-1">
-    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-</svg>
-
-          3DEssentialsResources
-        </span>
-
-</a>
-    </li>
-</ul>
-
-</div>
-      
-</modal-dialog></div>
-  </div>
-
-  <div class="AppHeader-context-full">
-    <nav role="navigation" aria-label="Page context">
-      <ul role="list" class="list-style-none" >
-    <li>
-      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;anthonyromrell&quot;,&quot;screen_size&quot;:&quot;full&quot;}" data-hovercard-type="user" data-hovercard-url="/users/anthonyromrell/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/anthonyromrell" data-view-component="true" class="AppHeader-context-item">
-        <span class="AppHeader-context-item-label  ">
-
-          anthonyromrell
-        </span>
-
-</a>
-        <span class="AppHeader-context-item-separator">/</span>
-    </li>
-    <li>
-      <a data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;3DEssentialsResources&quot;,&quot;screen_size&quot;:&quot;full&quot;}" href="/anthonyromrell/3DEssentialsResources" data-view-component="true" class="AppHeader-context-item">
-        <span class="AppHeader-context-item-label  ">
-
-          3DEssentialsResources
-        </span>
-
-</a>
-    </li>
-</ul>
-
-    </nav>
-  </div>
-</div>
-
-      </div>
-      <div class="AppHeader-globalBar-end">
-          <div class="AppHeader-search" >
-              
-
-
-<qbsearch-input class="search-input" data-scope="repo:anthonyromrell/3DEssentialsResources" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="SbaPdTaCi_863mhNhiCUQhsvTosTwj0WhKQpnSWHXpl64XGilRTfqkynzuGUJI6uEgNS-Tz3f-5jUBxVq7omvg" data-max-custom-scopes="10" data-header-redesign-enabled="true" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="anthonyromrell/3DEssentialsResources" data-current-org="" data-current-owner="anthonyromrell" data-logged-in="true">
-  <div
-    class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center height-auto color-bg-transparent border-0 color-fg-subtle mx-0"
-    data-action="click:qbsearch-input#searchInputContainerClicked"
-  >
-      
-            <button type="button" data-action="click:qbsearch-input#handleExpand" class="AppHeader-button AppHeader-search-whenNarrow" aria-label="Search or jump to…" aria-expanded="false" aria-haspopup="dialog">
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
-    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
-</svg>
-          </button>
-
-
-<div class="AppHeader-search-whenRegular">
-  <div class="AppHeader-search-wrap AppHeader-search-wrap--hasTrailing">
-    <div class="AppHeader-search-control">
-      <label
-        for="AppHeader-searchInput"
-        aria-label="Search or jump to…"
-        class="AppHeader-search-visual--leading"
-      >
-        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
-    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
-</svg>
-      </label>
-
-                <button
-            type="button"
-            data-target="qbsearch-input.inputButton"
-            data-action="click:qbsearch-input#handleExpand"
-            class="AppHeader-searchButton form-control input-contrast text-left color-fg-subtle no-wrap"
-            data-hotkey="s,/"
-            data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SEARCH&quot;,&quot;label&quot;:null}"
-          >
-            <div class="overflow-hidden">
-              <span id="qb-input-query" data-target="qbsearch-input.inputButtonText">
-                  Type <kbd class="AppHeader-search-kbd">/</kbd> to search
-              </span>
-            </div>
-          </button>
-
-    </div>
-
-
-      <button type="button" id="AppHeader-commandPalette-button" class="AppHeader-search-action--trailing js-activate-command-palette" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;command_palette&quot;,&quot;label&quot;:&quot;open command palette&quot;}">
-        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-command-palette">
-    <path d="m6.354 8.04-4.773 4.773a.75.75 0 1 0 1.061 1.06L7.945 8.57a.75.75 0 0 0 0-1.06L2.642 2.206a.75.75 0 0 0-1.06 1.061L6.353 8.04ZM8.75 11.5a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5Z"></path>
-</svg>
-      </button>
-
-      <tool-tip id="tooltip-61ed2ea3-243a-44d6-8a9b-90d072ece2f9" for="AppHeader-commandPalette-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Command palette</tool-tip>
-  </div>
-</div>
-
-    <input type="hidden" name="type" class="js-site-search-type-field">
-
-    
-<div class="Overlay--hidden " data-modal-dialog-overlay>
-  <modal-dialog data-action="close:qbsearch-input#handleClose cancel:qbsearch-input#handleClose" data-target="qbsearch-input.searchSuggestionsDialog" role="dialog" id="search-suggestions-dialog" aria-modal="true" aria-labelledby="search-suggestions-dialog-header" data-view-component="true" class="Overlay Overlay--width-medium Overlay--height-auto">
-      <h1 id="search-suggestions-dialog-header" class="sr-only">Search code, repositories, users, issues, pull requests...</h1>
-    <div class="Overlay-body Overlay-body--paddingNone">
-      
-          <div data-view-component="true">        <div class="search-suggestions position-absolute width-full color-shadow-large border color-fg-default color-bg-default overflow-hidden d-flex flex-column query-builder-container"
-          style="border-radius: 12px;"
-          data-target="qbsearch-input.queryBuilderContainer"
-          hidden
-        >
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="query-builder-test-form" action="" accept-charset="UTF-8" method="get">
-  <query-builder data-target="qbsearch-input.queryBuilder" id="query-builder-query-builder-test" data-filter-key=":" data-view-component="true" class="QueryBuilder search-query-builder">
-    <div class="FormControl FormControl--fullWidth">
-      <label id="query-builder-test-label" for="query-builder-test" class="FormControl-label sr-only">
-        Search
-      </label>
-      <div
-        class="QueryBuilder-StyledInput width-fit "
-        data-target="query-builder.styledInput"
-      >
-          <span id="query-builder-test-leadingvisual-wrap" class="FormControl-input-leadingVisualWrap QueryBuilder-leadingVisualWrap">
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search FormControl-input-leadingVisual">
-    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
-</svg>
-          </span>
-        <div data-target="query-builder.styledInputContainer" class="QueryBuilder-StyledInputContainer">
-          <div
-            aria-hidden="true"
-            class="QueryBuilder-StyledInputContent"
-            data-target="query-builder.styledInputContent"
-          ></div>
-          <div class="QueryBuilder-InputWrapper">
-            <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"></div>
-            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-138fc2e5-5ef0-410c-965f-9142e49159a7" data-target="query-builder.input" data-action="
-          input:query-builder#inputChange
-          blur:query-builder#inputBlur
-          keydown:query-builder#inputKeydown
-          focus:query-builder#inputFocus
-        " data-view-component="true" class="FormControl-input QueryBuilder-Input FormControl-medium" />
-          </div>
-        </div>
-          <span class="sr-only" id="query-builder-test-clear">Clear</span>
-          
-  <button role="button" id="query-builder-test-clear-button" aria-labelledby="query-builder-test-clear query-builder-test-label" data-target="query-builder.clearButton" data-action="
-                click:query-builder#clear
-                focus:query-builder#clearButtonFocus
-                blur:query-builder#clearButtonBlur
-              " variant="small" hidden="hidden" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium mr-1 px-2 py-0 d-flex flex-items-center rounded-1 color-fg-muted">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill Button-visual">
-    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
-</svg>
-</button>  
-
-      </div>
-      <template id="search-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
-    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
-</svg>
-</template>
-
-<template id="code-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
-    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-</template>
-
-<template id="file-code-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-code">
-    <path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06ZM3.28 7.78 1.81 9.25l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Zm8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
-</svg>
-</template>
-
-<template id="history-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-history">
-    <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
-</svg>
-</template>
-
-<template id="repo-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
-    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-</svg>
-</template>
-
-<template id="bookmark-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bookmark">
-    <path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-</template>
-
-<template id="plus-circle-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus-circle">
-    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7.25-3.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z"></path>
-</svg>
-</template>
-
-<template id="circle-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-dot-fill">
-    <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
-</svg>
-</template>
-
-<template id="trash-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-trash">
-    <path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path>
-</svg>
-</template>
-
-<template id="team-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-people">
-    <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
-</svg>
-</template>
-
-<template id="project-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project">
-    <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"></path>
-</svg>
-</template>
-
-<template id="pencil-icon">
-  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
-    <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path>
-</svg>
-</template>
-
-        <div class="position-relative">
-                <ul
-                  role="listbox"
-                  class="ActionListWrap QueryBuilder-ListWrap"
-                  aria-label="Suggestions"
-                  data-action="
-                    combobox-commit:query-builder#comboboxCommit
-                    mousedown:query-builder#resultsMousedown
-                  "
-                  data-target="query-builder.resultsList"
-                  data-persist-list=false
-                  id="query-builder-test-results"
-                ></ul>
-        </div>
-      <div class="FormControl-inlineValidation" id="validation-138fc2e5-5ef0-410c-965f-9142e49159a7" hidden="hidden">
-        <span class="FormControl-inlineValidation--visual">
-          <svg aria-hidden="true" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
-    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
-</svg>
-        </span>
-        <span></span>
-</div>    </div>
-    <div data-target="query-builder.screenReaderFeedback" aria-live="polite" aria-atomic="true" class="sr-only"></div>
-</query-builder></form>
-          <div class="d-flex flex-row color-fg-muted px-3 text-small color-bg-default search-feedback-prompt">
-            <a target="_blank" href="https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax" data-view-component="true" class="Link color-fg-accent text-normal ml-2">
-              Search syntax tips
-</a>            <div class="d-flex flex-1"></div>
-                <button data-action="click:qbsearch-input#showFeedbackDialog" type="button" data-view-component="true" class="Button--link Button--medium Button color-fg-accent text-normal ml-2">    <span class="Button-content">
-      <span class="Button-label">Give feedback</span>
-    </span>
-</button>  
-          </div>
-        </div>
-</div>
-
-    </div>
-</modal-dialog></div>
-  </div>
-  <div data-action="click:qbsearch-input#retract" class="dark-backdrop position-fixed" hidden data-target="qbsearch-input.darkBackdrop"></div>
-  <div class="color-fg-default">
-    
-<div class="Overlay--hidden Overlay-backdrop--center" data-modal-dialog-overlay>
-  <modal-dialog data-target="qbsearch-input.feedbackDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" role="dialog" id="feedback-dialog" aria-modal="true" aria-disabled="true" aria-labelledby="feedback-dialog-title" aria-describedby="feedback-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
-    <div data-view-component="true" class="Overlay-header">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title " id="feedback-dialog-title">
-        Provide feedback
-      </h1>
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="feedback-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-</div>
-      <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="8c5odEgbhYRsqtiFyF865VIUU1Ygy-Iq74lFQTTHTgglsIfDcGqetA-ewtsGSJQT5Z-Fh6kQTGMBEEYqY04XVw" />
-          <p>We read every piece of feedback, and take your input very seriously.</p>
-          <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
-          <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
-          <label for="include_email" style="font-weight: normal">Include my email address so I can be contacted</label>
-</form></div>
-      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">          <button data-close-dialog-id="feedback-dialog" type="button" data-view-component="true" class="btn">    Cancel
-</button>
-          <button form="code-search-feedback-form" data-action="click:qbsearch-input#submitFeedback" type="submit" data-view-component="true" class="btn-primary btn">    Submit feedback
-</button>
-</div>
-</modal-dialog></div>
-
-    <custom-scopes data-target="qbsearch-input.customScopesManager">
-    
-<div class="Overlay--hidden Overlay-backdrop--center" data-modal-dialog-overlay>
-  <modal-dialog data-target="custom-scopes.customScopesModalDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" role="dialog" id="custom-scopes-dialog" aria-modal="true" aria-disabled="true" aria-labelledby="custom-scopes-dialog-title" aria-describedby="custom-scopes-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
-    <div data-view-component="true" class="Overlay-header Overlay-header--divided">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title " id="custom-scopes-dialog-title">
-        Saved searches
-      </h1>
-        <h2 id="custom-scopes-dialog-description" class="Overlay-description">Use saved searches to filter your results more quickly</h2>
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="custom-scopes-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-</div>
-      <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
-
-        <div hidden class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="iBULkynoOXN0hPw9WO1isc0VBIsm18aMDtiNA9OU5HD-e0lml63I-Jpv24hhKabboJEFJgZH5_yqhVfbkLIIRg" />
-          <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
-
-          <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
-
-          <div class="form-group">
-            <label for="custom_scope_name">Name</label>
-            <auto-check src="/search/custom_scopes/check_name" required>
-              <input
-                type="text"
-                name="custom_scope_name"
-                id="custom_scope_name"
-                data-target="custom-scopes.customScopesNameField"
-                class="form-control"
-                autocomplete="off"
-                placeholder="github-ruby"
-                required
-                maxlength="50">
-              <input type="hidden" value="1HvvhPFn6neL_04OiXQCQvs6jz-XzLdWgShPQy69EtgC37MWNp_rA9LYo4AWuva03Kw0GV1IQScYBK-nQrXv-Q" data-csrf="true" />
-            </auto-check>
-          </div>
-
-          <div class="form-group">
-            <label for="custom_scope_query">Query</label>
-            <input
-              type="text"
-              name="custom_scope_query"
-              id="custom_scope_query"
-              data-target="custom-scopes.customScopesQueryField"
-              class="form-control"
-              autocomplete="off"
-              placeholder="(repo:mona/a OR repo:mona/b) AND lang:python"
-              required
-              maxlength="500">
-          </div>
-
-          <p class="text-small color-fg-muted">
-            To see all available qualifiers, see our <a class="Link--inTextBlock" href="https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax">documentation</a>.
-          </p>
-</form>        </div>
-
-        <div data-target="custom-scopes.manageCustomScopesForm">
-          <div data-target="custom-scopes.list"></div>
-        </div>
-
-</div>
-      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">          <button data-action="click:custom-scopes#customScopesCancel" type="button" data-view-component="true" class="btn">    Cancel
-</button>
-          <button form="custom-scopes-dialog-form" data-action="click:custom-scopes#customScopesSubmit" data-target="custom-scopes.customScopesSubmitButton" type="submit" data-view-component="true" class="btn-primary btn">    Create saved search
-</button>
-</div>
-</modal-dialog></div>
-    </custom-scopes>
-  </div>
-</qbsearch-input><input type="hidden" value="N_hQqe3_l49TQNYwBRPikAq0jINaIng5ryVkaZ6cU6SxQNBhB3cVWKXTHc-G1wXnkht4okhvhyCCgKlyP9ZCug" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" />
-
-          </div>
-
-        <div class="AppHeader-actions">
-          <action-menu data-select-variant="none" data-view-component="true">
-  <focus-group direction="vertical" mnemonics retain>
-    <div data-view-component="true" class="Button-withTooltip">  <button id="global-create-menu-button" popovertarget="global-create-menu-overlay" aria-label="Create something new" aria-controls="global-create-menu-list" aria-haspopup="true" type="button" data-view-component="true" class="AppHeader-button Button--secondary Button--small Button width-auto color-fg-muted">    <span class="Button-content">
-        <span class="Button-visual Button-leadingVisual">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
-    <path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path>
-</svg>
-        </span>
-      <span class="Button-label"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
-    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
-</svg></span>
-    </span>
-</button>  <tool-tip id="tooltip-eeba3fc6-b7b2-4d07-929a-b8848c98f935" for="global-create-menu-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">Create new...</tool-tip>
-</div>
-
-<anchored-position id="global-create-menu-overlay" anchor="global-create-menu-button" align="end" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true">
-  <div data-view-component="true" class="Overlay Overlay--size-auto">
-    
-      
-        <div data-view-component="true">
-  <ul aria-labelledby="global-create-menu-button" id="global-create-menu-list" role="menu" data-view-component="true" class="ActionListWrap--inset ActionListWrap">
-      <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new repository&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    <a href="/new" tabindex="-1" id="item-12c6ce21-3152-4b29-bcfc-162f721ddab3" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
-    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-              New repository
-
-</span></a>
-  
-  
-</li>
-      <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;import repository&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    <a href="/new/import" tabindex="-1" id="item-d7c74349-10ec-44c2-b430-b52a39b6b2dc" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-push">
-    <path d="M1 2.5A2.5 2.5 0 0 1 3.5 0h8.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V1.5h-8a1 1 0 0 0-1 1v6.708A2.493 2.493 0 0 1 3.5 9h3.25a.75.75 0 0 1 0 1.5H3.5a1 1 0 0 0 0 2h5.75a.75.75 0 0 1 0 1.5H3.5A2.5 2.5 0 0 1 1 11.5Zm13.23 7.79h-.001l-1.224-1.224v6.184a.75.75 0 0 1-1.5 0V9.066L10.28 10.29a.75.75 0 0 1-1.06-1.061l2.505-2.504a.75.75 0 0 1 1.06 0L15.29 9.23a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-                Import repository
-
-</span></a>
-  
-  
-</li>
-      <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-      <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new codespace&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    <a href="/codespaces/new" tabindex="-1" id="item-60439b11-00f1-4701-a571-97a7129bd4c8" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
-    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-                New codespace
-
-</span></a>
-  
-  
-</li>
-      <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new gist&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    <a href="https://gist.github.com/" tabindex="-1" id="item-1eca74c0-2232-490a-bff8-bdebe48472ce" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
-    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-              New gist
-
-</span></a>
-  
-  
-</li>
-      <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-      <li data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;add_dropdown&quot;,&quot;label&quot;:&quot;new organization&quot;}" data-targets="action-list.items" role="none" data-view-component="true" class="ActionListItem">
-    
-    <a href="/account/organizations/new" tabindex="-1" id="item-9f75c892-149f-4c44-bfbc-a5ed339cb8fa" role="menuitem" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-organization">
-    <path d="M1.75 16A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 0 0 .25-.25V8.285a.25.25 0 0 0-.111-.208l-1.055-.703a.749.749 0 1 1 .832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0 1 14.25 16h-3.5a.766.766 0 0 1-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 0 1-.75-.75V14h-1v1.25a.75.75 0 0 1-.75.75Zm-.25-1.75c0 .138.112.25.25.25H4v-1.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 .75.75v1.25h2.25a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM3.75 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 3.75A.75.75 0 0 1 3.75 3h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 3.75Zm4 3A.75.75 0 0 1 7.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 7 6.75ZM7.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 9.75A.75.75 0 0 1 3.75 9h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 9.75ZM7.75 9h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-                New organization
-
-</span></a>
-  
-  
-</li>
-</ul>  
-</div>
-
-</div></anchored-position>  </focus-group>
-</action-menu>
-
-            <div data-view-component="true" class="Button-withTooltip">
-  <a href="/issues" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;ISSUES_HEADER&quot;,&quot;label&quot;:null}" id="icon-button-1575d022-83f0-4f58-8c33-58c1d275eab0" aria-labelledby="tooltip-fc0677d7-d8cb-4265-90f2-0dda497e59df" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button color-fg-muted">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened Button-visual">
-    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
-</svg>
-</a>  <tool-tip id="tooltip-fc0677d7-d8cb-4265-90f2-0dda497e59df" for="icon-button-1575d022-83f0-4f58-8c33-58c1d275eab0" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Issues</tool-tip>
-</div>
-            <div data-view-component="true" class="Button-withTooltip">
-  <a href="/pulls" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PULL_REQUESTS_HEADER&quot;,&quot;label&quot;:null}" id="icon-button-8c6028e6-3552-473d-8462-a3e36b6cd0eb" aria-labelledby="tooltip-0631c264-6ed7-4118-9f3c-28edf1c0464a" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button color-fg-muted">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request Button-visual">
-    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
-</svg>
-</a>  <tool-tip id="tooltip-0631c264-6ed7-4118-9f3c-28edf1c0464a" for="icon-button-8c6028e6-3552-473d-8462-a3e36b6cd0eb" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Pull requests</tool-tip>
-</div>
-        </div>
-
-        
-
-<notification-indicator data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MTQzMTI3MTkwIiwidCI6MTY5NjUyMDUxNH0=--88d8407f24f924e45863d41c6767f4a20f0edda03ceb7c9179970713d27e9fe6" data-indicator-mode="none" data-tooltip-global="You have unread notifications" data-tooltip-unavailable="Notifications are unavailable at the moment." data-tooltip-none="You have no unread notifications" data-header-redesign-enabled="true" data-fetch-indicator-src="/notifications/indicator" data-fetch-indicator-enabled="true" data-view-component="true" class="js-socket-channel">
-  <a id="AppHeader-notifications-button" href="/notifications"
-    class="AppHeader-button Button--secondary"
-
-    style="width:32px;height:32px;"
-
-    data-hotkey="g n"
-    data-target="notification-indicator.link"
-    aria-label="Notifications"
-
-      data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;notifications&quot;,&quot;label&quot;:null}"
-  >
-
-    <span
-      data-target="notification-indicator.badge"
-      class="mail-status unread d-none" hidden>
-    </span>
-
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-inbox color-fg-muted mr-0">
-    <path d="M2.8 2.06A1.75 1.75 0 0 1 4.41 1h7.18c.7 0 1.333.417 1.61 1.06l2.74 6.395c.04.093.06.194.06.295v4.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25v-4.5c0-.101.02-.202.06-.295Zm1.61.44a.25.25 0 0 0-.23.152L1.887 8H4.75a.75.75 0 0 1 .6.3L6.625 10h2.75l1.275-1.7a.75.75 0 0 1 .6-.3h2.863L11.82 2.652a.25.25 0 0 0-.23-.152Zm10.09 7h-2.875l-1.275 1.7a.75.75 0 0 1-.6.3h-3.5a.75.75 0 0 1-.6-.3L4.375 9.5H1.5v3.75c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Z"></path>
-</svg>
-  </a>
-
-    <tool-tip data-target="notification-indicator.tooltip" id="tooltip-06d40baf-3813-4599-865d-7b6d8eb7d871" for="AppHeader-notifications-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">Notifications</tool-tip>
-</notification-indicator>
-
-        
-
-        <div class="AppHeader-user">
-          <deferred-side-panel data-url="/_side-panels/user?memex_enabled=true&amp;repository=3DEssentialsResources&amp;user=SnortingBaguette&amp;user_can_create_organizations=true&amp;user_id=143127190">
-  <include-fragment data-target="deferred-side-panel.fragment">
-      <user-drawer-side-panel>
-      <button aria-label="Open user account menu" data-action="click:deferred-side-panel#loadPanel click:deferred-side-panel#panelOpened" data-show-dialog-id="dialog-26062096-a9c5-4b91-92d5-934a2d3245be" id="dialog-show-dialog-26062096-a9c5-4b91-92d5-934a2d3245be" type="button" data-view-component="true" class="AppHeader-logo Button--invisible Button--medium Button Button--invisible-noVisuals color-bg-transparent p-0">    <span class="Button-content">
-      <span class="Button-label"><img src="https://avatars.githubusercontent.com/u/143127190?v=4" alt="" size="32" height="32" width="32" data-view-component="true" class="avatar circle" /></span>
-    </span>
-</button>  
-
-<div class="Overlay--hidden Overlay-backdrop--side Overlay-backdrop--placement-right" data-modal-dialog-overlay>
-  <modal-dialog data-target="deferred-side-panel.panel" role="dialog" id="dialog-26062096-a9c5-4b91-92d5-934a2d3245be" aria-modal="true" aria-disabled="true" aria-labelledby="dialog-26062096-a9c5-4b91-92d5-934a2d3245be-title" aria-describedby="dialog-26062096-a9c5-4b91-92d5-934a2d3245be-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait Overlay--motion-scaleFade SidePanel">
-    <div styles="flex-direction: row;" data-view-component="true" class="Overlay-header">
-  <div class="Overlay-headerContentWrap">
-    <div class="Overlay-titleWrap">
-      <h1 class="Overlay-title sr-only" id="dialog-26062096-a9c5-4b91-92d5-934a2d3245be-title">
-        Account menu
-      </h1>
-            <div data-view-component="true" class="d-flex">
-      <div data-view-component="true" class="AppHeader-logo position-relative">
-        <img src="https://avatars.githubusercontent.com/u/143127190?v=4" alt="" size="32" height="32" width="32" data-view-component="true" class="avatar circle" />
-</div>        <div data-view-component="true" class="overflow-hidden d-flex width-full">        <div data-view-component="true" class="lh-condensed overflow-hidden d-flex flex-column flex-justify-center ml-2 f5 mr-auto width-full">
-          <span data-view-component="true" class="Truncate text-bold">
-    <span data-view-component="true" class="Truncate-text">
-            SnortingBaguette
-</span>
-</span>          <span data-view-component="true" class="Truncate color-fg-subtle">
-    <span data-view-component="true" class="Truncate-text">
-            Dmitry Panchuk
-</span>
-</span></div>
-</div>
-</div>
-    </div>
-    <div class="Overlay-actionWrap">
-      <button data-close-dialog-id="dialog-26062096-a9c5-4b91-92d5-934a2d3245be" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg></button>
-    </div>
-  </div>
-</div>
-      <div data-view-component="true" class="Overlay-body d-flex flex-column height-full px-2">      <nav aria-label="User navigation" data-view-component="true" class="ActionList">
-  
-  <nav-list>
-    <ul data-view-component="true" class="ActionListWrap">
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <button id="item-8ca0881a-508f-40a6-b589-06802626af56" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-</svg>
-</span>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          
-
-  <span class="color-fg-muted">
-    Loading...
-  </span>
-
-</span></button>
-  
-  
-</li>
-
-        
-          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PROFILE&quot;,&quot;label&quot;:null}" id="item-58a3c1ae-0b56-4952-a174-eb9cdd27f77f" href="https://github.com/SnortingBaguette" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-person">
-    <path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Your profile
-</span></a>
-  
-  
-</li>
-
-        
-          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_REPOSITORIES&quot;,&quot;label&quot;:null}" id="item-6a4af811-1437-49b2-b2fb-fefafd026f74" href="/SnortingBaguette?tab=repositories" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
-    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Your repositories
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_PROJECTS&quot;,&quot;label&quot;:null}" id="item-265fe1fd-05fe-46ea-afd8-5abe71960ff9" href="/SnortingBaguette?tab=projects" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project">
-    <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Your projects
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <button id="item-a40a4068-105d-4111-a192-0d97a9cad0e2" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-</svg>
-</span>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          
-
-  <span class="color-fg-muted">
-    Loading...
-  </span>
-
-</span></button>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_STARS&quot;,&quot;label&quot;:null}" id="item-51738005-4595-4400-b375-555ee3a6f88b" href="/SnortingBaguette?tab=stars" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star">
-    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Your stars
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SPONSORS&quot;,&quot;label&quot;:null}" id="item-7cf3db31-9fa0-4184-80af-058f2863998e" href="/sponsors/accounts" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-heart">
-    <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Your sponsors
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;YOUR_GISTS&quot;,&quot;label&quot;:null}" id="item-103fc4e0-e71a-4b10-8ffc-36b2af942f77" href="https://gist.github.com/mine" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-square">
-    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Your gists
-</span></a>
-  
-  
-</li>
-
-        
-          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <button id="item-e8a6b97d-f6cc-4db2-83bb-bd1ee9f72760" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-</svg>
-</span>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          
-
-  <span class="color-fg-muted">
-    Loading...
-  </span>
-
-</span></button>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <button id="item-68f7ecc0-b0fe-41f6-b811-86f78657773f" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-</svg>
-</span>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          
-
-  <span class="color-fg-muted">
-    Loading...
-  </span>
-
-</span></button>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <button id="item-88394e64-8da1-470a-a862-bba622aaee7a" type="button" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <span data-view-component="true" class="d-flex flex-items-center">    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="16" height="16" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
-  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none" />
-  <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-</svg>
-</span>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          
-
-  <span class="color-fg-muted">
-    Loading...
-  </span>
-
-</span></button>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SETTINGS&quot;,&quot;label&quot;:null}" id="item-3e8f90f0-d060-4274-a7de-e372f3b72595" href="/settings/profile" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gear">
-    <path d="M8 0a8.2 8.2 0 0 1 .701.031C9.444.095 9.99.645 10.16 1.29l.288 1.107c.018.066.079.158.212.224.231.114.454.243.668.386.123.082.233.09.299.071l1.103-.303c.644-.176 1.392.021 1.82.63.27.385.506.792.704 1.218.315.675.111 1.422-.364 1.891l-.814.806c-.049.048-.098.147-.088.294.016.257.016.515 0 .772-.01.147.038.246.088.294l.814.806c.475.469.679 1.216.364 1.891a7.977 7.977 0 0 1-.704 1.217c-.428.61-1.176.807-1.82.63l-1.102-.302c-.067-.019-.177-.011-.3.071a5.909 5.909 0 0 1-.668.386c-.133.066-.194.158-.211.224l-.29 1.106c-.168.646-.715 1.196-1.458 1.26a8.006 8.006 0 0 1-1.402 0c-.743-.064-1.289-.614-1.458-1.26l-.289-1.106c-.018-.066-.079-.158-.212-.224a5.738 5.738 0 0 1-.668-.386c-.123-.082-.233-.09-.299-.071l-1.103.303c-.644.176-1.392-.021-1.82-.63a8.12 8.12 0 0 1-.704-1.218c-.315-.675-.111-1.422.363-1.891l.815-.806c.05-.048.098-.147.088-.294a6.214 6.214 0 0 1 0-.772c.01-.147-.038-.246-.088-.294l-.815-.806C.635 6.045.431 5.298.746 4.623a7.92 7.92 0 0 1 .704-1.217c.428-.61 1.176-.807 1.82-.63l1.102.302c.067.019.177.011.3-.071.214-.143.437-.272.668-.386.133-.066.194-.158.211-.224l.29-1.106C6.009.645 6.556.095 7.299.03 7.53.01 7.764 0 8 0Zm-.571 1.525c-.036.003-.108.036-.137.146l-.289 1.105c-.147.561-.549.967-.998 1.189-.173.086-.34.183-.5.29-.417.278-.97.423-1.529.27l-1.103-.303c-.109-.03-.175.016-.195.045-.22.312-.412.644-.573.99-.014.031-.021.11.059.19l.815.806c.411.406.562.957.53 1.456a4.709 4.709 0 0 0 0 .582c.032.499-.119 1.05-.53 1.456l-.815.806c-.081.08-.073.159-.059.19.162.346.353.677.573.989.02.03.085.076.195.046l1.102-.303c.56-.153 1.113-.008 1.53.27.161.107.328.204.501.29.447.222.85.629.997 1.189l.289 1.105c.029.109.101.143.137.146a6.6 6.6 0 0 0 1.142 0c.036-.003.108-.036.137-.146l.289-1.105c.147-.561.549-.967.998-1.189.173-.086.34-.183.5-.29.417-.278.97-.423 1.529-.27l1.103.303c.109.029.175-.016.195-.045.22-.313.411-.644.573-.99.014-.031.021-.11-.059-.19l-.815-.806c-.411-.406-.562-.957-.53-1.456a4.709 4.709 0 0 0 0-.582c-.032-.499.119-1.05.53-1.456l.815-.806c.081-.08.073-.159.059-.19a6.464 6.464 0 0 0-.573-.989c-.02-.03-.085-.076-.195-.046l-1.102.303c-.56.153-1.113.008-1.53-.27a4.44 4.44 0 0 0-.501-.29c-.447-.222-.85-.629-.997-1.189l-.289-1.105c-.029-.11-.101-.143-.137-.146a6.6 6.6 0 0 0-1.142 0ZM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9.5 8a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 9.5 8Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Settings
-</span></a>
-  
-  
-</li>
-
-        
-          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;DOCS&quot;,&quot;label&quot;:null}" id="item-147ea72a-c3f1-45d4-aa8f-19715665bbff" href="https://docs.github.com" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book">
-    <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          GitHub Docs
-</span></a>
-  
-  
-</li>
-
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;SUPPORT&quot;,&quot;label&quot;:null}" id="item-69bd37fd-8981-4cb2-8666-0e383ba9431d" href="https://support.github.com" data-view-component="true" class="ActionListContent ActionListContent--visual16">
-        <span class="ActionListItem-visual ActionListItem-visual--leading">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-people">
-    <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
-</svg>
-        </span>
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          GitHub Support
-</span></a>
-  
-  
-</li>
-
-        
-          <li role="presentation" aria-hidden="true" data-view-component="true" class="ActionList-sectionDivider"></li>
-        
-          
-<li data-item-id="" data-targets="nav-list.items" data-view-component="true" class="ActionListItem">
-    
-    <a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;LOGOUT&quot;,&quot;label&quot;:null}" id="item-06051141-936e-4105-af61-635c8b10dcea" href="/logout" data-view-component="true" class="ActionListContent">
-      
-        <span data-view-component="true" class="ActionListItem-label">
-          Sign out
-</span></a>
-  
-  
-</li>
-
-</ul>  </nav-list>
-</nav>
-
-
-</div>
-      
-</modal-dialog></div>
-  </user-drawer-side-panel>
-
-  </include-fragment>
-</deferred-side-panel>
-        </div>
-
-        <div class="position-absolute mt-2">
-            
-<site-header-logged-in-user-menu>
-
-</site-header-logged-in-user-menu>
-
-        </div>
-      </div>
-    </div>
-
-
-      <div class="AppHeader-localBar" >
-        <nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav">
-
-  <ul data-view-component="true" class="UnderlineNav-body list-style-none">
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="code-tab" href="/anthonyromrell/3DEssentialsResources" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments repo_attestations /anthonyromrell/3DEssentialsResources" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Code&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
-    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-        <span data-content="Code">Code</span>
-          <span id="code-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
-
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="issues-tab" href="/anthonyromrell/3DEssentialsResources/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /anthonyromrell/3DEssentialsResources/issues" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Issues&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
-</svg>
-        <span data-content="Issues">Issues</span>
-          <span id="issues-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
-
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="pull-requests-tab" href="/anthonyromrell/3DEssentialsResources/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /anthonyromrell/3DEssentialsResources/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Pull requests&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
-</svg>
-        <span data-content="Pull requests">Pull requests</span>
-          <span id="pull-requests-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
-
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="actions-tab" href="/anthonyromrell/3DEssentialsResources/actions" data-tab-item="i3actions-tab" data-selected-links="repo_actions /anthonyromrell/3DEssentialsResources/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Actions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
-</svg>
-        <span data-content="Actions">Actions</span>
-          <span id="actions-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
-
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="projects-tab" href="/anthonyromrell/3DEssentialsResources/projects" data-tab-item="i4projects-tab" data-selected-links="repo_projects new_repo_project repo_project /anthonyromrell/3DEssentialsResources/projects" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Projects&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
-</svg>
-        <span data-content="Projects">Projects</span>
-          <span id="projects-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
-
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="wiki-tab" href="/anthonyromrell/3DEssentialsResources/wiki" data-tab-item="i5wiki-tab" data-selected-links="repo_wiki /anthonyromrell/3DEssentialsResources/wiki" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g w" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Wiki&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
-</svg>
-        <span data-content="Wiki">Wiki</span>
-          <span id="wiki-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
-
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="security-tab" href="/anthonyromrell/3DEssentialsResources/security" data-tab-item="i6security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /anthonyromrell/3DEssentialsResources/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-        <span data-content="Security">Security</span>
-          <include-fragment src="/anthonyromrell/3DEssentialsResources/security/overall-count" accept="text/fragment+html"></include-fragment>
-
-    
-</a></li>
-      <li data-view-component="true" class="d-inline-flex">
-  <a id="insights-tab" href="/anthonyromrell/3DEssentialsResources/pulse" data-tab-item="i7insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /anthonyromrell/3DEssentialsResources/pulse" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Insights&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
-    
-              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
-    <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
-</svg>
-        <span data-content="Insights">Insights</span>
-          <span id="insights-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
-
-
-    
-</a></li>
-</ul>
-    <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">        <details data-view-component="true" class="details-overlay details-reset position-relative">
-    <summary role="button" data-view-component="true">          <div class="UnderlineNav-item mr-0 border-0">
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
-    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-</svg>
-            <span class="sr-only">More</span>
-          </div>
-</summary>
-    <details-menu role="menu" data-view-component="true" class="dropdown-menu dropdown-menu-sw">
-          <ul>
-              <li data-menu-item="i0code-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments repo_attestations /anthonyromrell/3DEssentialsResources" href="/anthonyromrell/3DEssentialsResources">
-                  Code
-</a>              </li>
-              <li data-menu-item="i1issues-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_issues repo_labels repo_milestones /anthonyromrell/3DEssentialsResources/issues" href="/anthonyromrell/3DEssentialsResources/issues">
-                  Issues
-</a>              </li>
-              <li data-menu-item="i2pull-requests-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_pulls checks /anthonyromrell/3DEssentialsResources/pulls" href="/anthonyromrell/3DEssentialsResources/pulls">
-                  Pull requests
-</a>              </li>
-              <li data-menu-item="i3actions-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_actions /anthonyromrell/3DEssentialsResources/actions" href="/anthonyromrell/3DEssentialsResources/actions">
-                  Actions
-</a>              </li>
-              <li data-menu-item="i4projects-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_projects new_repo_project repo_project /anthonyromrell/3DEssentialsResources/projects" href="/anthonyromrell/3DEssentialsResources/projects">
-                  Projects
-</a>              </li>
-              <li data-menu-item="i5wiki-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_wiki /anthonyromrell/3DEssentialsResources/wiki" href="/anthonyromrell/3DEssentialsResources/wiki">
-                  Wiki
-</a>              </li>
-              <li data-menu-item="i6security-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="security overview alerts policy token_scanning code_scanning /anthonyromrell/3DEssentialsResources/security" href="/anthonyromrell/3DEssentialsResources/security">
-                  Security
-</a>              </li>
-              <li data-menu-item="i7insights-tab" hidden>
-                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /anthonyromrell/3DEssentialsResources/pulse" href="/anthonyromrell/3DEssentialsResources/pulse">
-                  Insights
-</a>              </li>
-          </ul>
-</details-menu>
-</details></div>
-</nav>
-      </div>
-</header>
-
-
-      <div hidden="hidden" data-view-component="true" class="js-stale-session-flash stale-session-flash flash flash-warn mb-3">
-  
-        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-        <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
-        <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
-        <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
-
-    <div data-view-component="true" class="flash-close">
-  <button id="icon-button-ae30a473-bc2c-4766-beb4-e733dc55a75e" aria-labelledby="tooltip-7627b4e1-f1c1-4405-85a2-c9f7921d3e40" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium js-flash-close">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-</button>  <tool-tip id="tooltip-7627b4e1-f1c1-4405-85a2-c9f7921d3e40" for="icon-button-ae30a473-bc2c-4766-beb4-e733dc55a75e" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
-</div>
-
-  
-</div>
-          
-    </div>
-
-  <div id="start-of-content" class="show-on-focus"></div>
-
-
-
-
-
-
-
-
-    <div id="js-flash-container" data-turbo-replace>
-
-
-
-
-
-  <template class="js-flash-template">
-    
-<div class="flash flash-full   {{ className }}">
-  <div class="px-2" >
-    <button autofocus class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-    </button>
-    <div aria-atomic="true" role="alert" class="js-flash-alert">
-      
-      <div>{{ message }}</div>
-
-    </div>
-  </div>
-</div>
-  </template>
-</div>
-
-
-    
-    <notification-shelf-watcher data-base-url="https://github.com/notifications/beta/shelf" data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MTQzMTI3MTkwIiwidCI6MTY5NjUyMDUxNH0=--88d8407f24f924e45863d41c6767f4a20f0edda03ceb7c9179970713d27e9fe6" data-view-component="true" class="js-socket-channel"></notification-shelf-watcher>
-  <div hidden data-initial data-target="notification-shelf-watcher.placeholder"></div>
-
-
-
-
-
-
-      <details
-  class="details-reset details-overlay details-overlay-dark js-command-palette-dialog"
-  id="command-palette-pjax-container"
-  data-turbo-replace
->
-  <summary aria-label="Command palette trigger" tabindex="-1"></summary>
-  <details-dialog class="command-palette-details-dialog d-flex flex-column flex-justify-center height-fit" aria-label="Command palette">
-    <command-palette
-      class="command-palette color-bg-default rounded-3 border color-shadow-small"
-      return-to=/anthonyromrell/3DEssentialsResources/blob/master/Maya/scenes/ReTopo/undefined
-      user-id="143127190"
-      activation-hotkey="Mod+k,Mod+Alt+k"
-      command-mode-hotkey="Mod+Shift+k"
-      data-action="
-        command-palette-input-ready:command-palette#inputReady
-        command-palette-page-stack-updated:command-palette#updateInputScope
-        itemsUpdated:command-palette#itemsUpdated
-        keydown:command-palette#onKeydown
-        loadingStateChanged:command-palette#loadingStateChanged
-        selectedItemChanged:command-palette#selectedItemChanged
-        pageFetchError:command-palette#pageFetchError
-      ">
-
-        <command-palette-mode
-          data-char="#"
-            data-scope-types="[&quot;&quot;]"
-            data-placeholder="Search issues and pull requests"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="#"
-            data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-            data-placeholder="Search issues, pull requests, discussions, and projects"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="!"
-            data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-            data-placeholder="Search projects"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="@"
-            data-scope-types="[&quot;&quot;]"
-            data-placeholder="Search or jump to a user, organization, or repository"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="@"
-            data-scope-types="[&quot;owner&quot;]"
-            data-placeholder="Search or jump to a repository"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="/"
-            data-scope-types="[&quot;repository&quot;]"
-            data-placeholder="Search files"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="?"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char="&gt;"
-            data-placeholder="Run a command"
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char=""
-            data-scope-types="[&quot;&quot;]"
-            data-placeholder="Search or jump to..."
-        ></command-palette-mode>
-        <command-palette-mode
-          data-char=""
-            data-scope-types="[&quot;owner&quot;]"
-            data-placeholder="Search or jump to..."
-        ></command-palette-mode>
-      <command-palette-mode
-        class="js-command-palette-default-mode"
-        data-char=""
-        data-placeholder="Search or jump to..."
-      ></command-palette-mode>
-
-      <command-palette-input placeholder="Search or jump to..."
-
-        data-action="
-          command-palette-input:command-palette#onInput
-          command-palette-select:command-palette#onSelect
-          command-palette-descope:command-palette#onDescope
-          command-palette-cleared:command-palette#onInputClear
-        "
-      >
-        <div class="js-search-icon d-flex flex-items-center mr-2" style="height: 26px">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search color-fg-muted">
-    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
-</svg>
-        </div>
-        <div class="js-spinner d-flex flex-items-center mr-2 color-fg-muted" hidden>
-          <svg aria-label="Loading" class="anim-rotate" viewBox="0 0 16 16" fill="none" width="16" height="16">
-            <circle
-              cx="8"
-              cy="8"
-              r="7"
-              stroke="currentColor"
-              stroke-opacity="0.25"
-              stroke-width="2"
-              vector-effect="non-scaling-stroke"
-            ></circle>
-            <path
-              d="M15 8a7.002 7.002 0 00-7-7"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              vector-effect="non-scaling-stroke"
-            ></path>
-          </svg>
-        </div>
-        <command-palette-scope >
-          <div data-target="command-palette-scope.placeholder" hidden class="color-fg-subtle">/&nbsp;&nbsp;<span class="text-semibold color-fg-default">...</span>&nbsp;&nbsp;/&nbsp;&nbsp;</div>
-              <command-palette-token
-                data-text="anthonyromrell"
-                data-id="MDQ6VXNlcjM1MzM0Njg="
-                data-type="owner"
-                data-value="anthonyromrell"
-                data-targets="command-palette-scope.tokens"
-                class="color-fg-default text-semibold"
-                style="white-space:nowrap;line-height:20px;"
-                >anthonyromrell<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
-              <command-palette-token
-                data-text="3DEssentialsResources"
-                data-id="MDEwOlJlcG9zaXRvcnkyMDAzMDk3NQ=="
-                data-type="repository"
-                data-value="3DEssentialsResources"
-                data-targets="command-palette-scope.tokens"
-                class="color-fg-default text-semibold"
-                style="white-space:nowrap;line-height:20px;"
-                >3DEssentialsResou...<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
-        </command-palette-scope>
-        <div class="command-palette-input-group flex-1 form-control border-0 box-shadow-none" style="z-index: 0">
-          <div class="command-palette-typeahead position-absolute d-flex flex-items-center Truncate">
-            <span class="typeahead-segment input-mirror" data-target="command-palette-input.mirror"></span>
-            <span class="Truncate-text" data-target="command-palette-input.typeaheadText"></span>
-            <span class="typeahead-segment" data-target="command-palette-input.typeaheadPlaceholder"></span>
-          </div>
-          <input
-            class="js-overlay-input typeahead-input d-none"
-            disabled
-            tabindex="-1"
-            aria-label="Hidden input for typeahead"
-          >
-          <input
-            type="text"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="false"
-            class="js-input typeahead-input form-control border-0 box-shadow-none input-block width-full no-focus-indicator"
-            aria-label="Command palette input"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-            aria-autocomplete="list"
-            aria-controls="command-palette-page-stack"
-            role="combobox"
-            data-action="
-              input:command-palette-input#onInput
-              keydown:command-palette-input#onKeydown
-            "
-          >
-        </div>
-          <div data-view-component="true" class="position-relative d-inline-block">
-    <button aria-keyshortcuts="Control+Backspace" data-action="click:command-palette-input#onClear keypress:command-palette-input#onClear" data-target="command-palette-input.clearButton" id="command-palette-clear-button" hidden="hidden" type="button" data-view-component="true" class="btn-octicon command-palette-input-clear-button">      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill">
-    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
-</svg>
-</button>    <tool-tip id="tooltip-8c778a8a-451a-4e60-9be8-d4935d38ad04" for="command-palette-clear-button" popover="manual" data-direction="w" data-type="label" data-view-component="true" class="sr-only position-absolute">Clear Command Palette</tool-tip>
-</div>
-      </command-palette-input>
-
-      <command-palette-page-stack
-        data-default-scope-id="MDEwOlJlcG9zaXRvcnkyMDAzMDk3NQ=="
-        data-default-scope-type="Repository"
-        data-action="command-palette-page-octicons-cached:command-palette-page-stack#cacheOcticons"
-      >
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">#</kbd> to search pull requests
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">#</kbd> to search issues
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">#</kbd> to search discussions
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">!</kbd> to search projects
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;owner&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">@</kbd> to search teams
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">@</kbd> to search people and organizations
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type <kbd class="hx_kbd">&gt;</kbd> to activate command mode
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode=""
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Go to your accessibility settings to change your keyboard shortcuts
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode="#"
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type author:@me to search your content
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode="#"
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type is:pr to filter to pull requests
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode="#"
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type is:issue to filter to issues
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode="#"
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type is:project to filter to projects
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-          <command-palette-tip
-            class="color-fg-muted f6 px-3 py-1 my-2"
-              data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-            data-mode="#"
-            data-value="">
-            <div class="d-flex flex-items-start flex-justify-between">
-              <div>
-                <span class="text-bold">Tip:</span>
-                  Type is:open to filter to open content
-              </div>
-              <div class="ml-2 flex-shrink-0">
-                Type <kbd class="hx_kbd">?</kbd> for help and tips
-              </div>
-            </div>
-          </command-palette-tip>
-        <command-palette-tip class="mx-3 my-2 flash flash-error d-flex flex-items-center" data-scope-types="*" data-on-error>
-          <div>
-            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-          </div>
-          <div class="px-2">
-            We’ve encountered an error and some results aren't available at this time. Type a new search or try again later.
-          </div>
-        </command-palette-tip>
-        <command-palette-tip class="h4 color-fg-default pl-3 pb-2 pt-3" data-on-empty data-scope-types="*" data-match-mode="[^?]|^$">
-          No results matched your search
-        </command-palette-tip>
-
-        <div hidden>
-
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="arrow-right-color-fg-muted">
-              <svg height="16" class="octicon octicon-arrow-right color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="arrow-right-color-fg-default">
-              <svg height="16" class="octicon octicon-arrow-right color-fg-default" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="codespaces-color-fg-muted">
-              <svg height="16" class="octicon octicon-codespaces color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="copy-color-fg-muted">
-              <svg height="16" class="octicon octicon-copy color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="dash-color-fg-muted">
-              <svg height="16" class="octicon octicon-dash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M2 7.75A.75.75 0 0 1 2.75 7h10a.75.75 0 0 1 0 1.5h-10A.75.75 0 0 1 2 7.75Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="file-color-fg-muted">
-              <svg height="16" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="gear-color-fg-muted">
-              <svg height="16" class="octicon octicon-gear color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 0a8.2 8.2 0 0 1 .701.031C9.444.095 9.99.645 10.16 1.29l.288 1.107c.018.066.079.158.212.224.231.114.454.243.668.386.123.082.233.09.299.071l1.103-.303c.644-.176 1.392.021 1.82.63.27.385.506.792.704 1.218.315.675.111 1.422-.364 1.891l-.814.806c-.049.048-.098.147-.088.294.016.257.016.515 0 .772-.01.147.038.246.088.294l.814.806c.475.469.679 1.216.364 1.891a7.977 7.977 0 0 1-.704 1.217c-.428.61-1.176.807-1.82.63l-1.102-.302c-.067-.019-.177-.011-.3.071a5.909 5.909 0 0 1-.668.386c-.133.066-.194.158-.211.224l-.29 1.106c-.168.646-.715 1.196-1.458 1.26a8.006 8.006 0 0 1-1.402 0c-.743-.064-1.289-.614-1.458-1.26l-.289-1.106c-.018-.066-.079-.158-.212-.224a5.738 5.738 0 0 1-.668-.386c-.123-.082-.233-.09-.299-.071l-1.103.303c-.644.176-1.392-.021-1.82-.63a8.12 8.12 0 0 1-.704-1.218c-.315-.675-.111-1.422.363-1.891l.815-.806c.05-.048.098-.147.088-.294a6.214 6.214 0 0 1 0-.772c.01-.147-.038-.246-.088-.294l-.815-.806C.635 6.045.431 5.298.746 4.623a7.92 7.92 0 0 1 .704-1.217c.428-.61 1.176-.807 1.82-.63l1.102.302c.067.019.177.011.3-.071.214-.143.437-.272.668-.386.133-.066.194-.158.211-.224l.29-1.106C6.009.645 6.556.095 7.299.03 7.53.01 7.764 0 8 0Zm-.571 1.525c-.036.003-.108.036-.137.146l-.289 1.105c-.147.561-.549.967-.998 1.189-.173.086-.34.183-.5.29-.417.278-.97.423-1.529.27l-1.103-.303c-.109-.03-.175.016-.195.045-.22.312-.412.644-.573.99-.014.031-.021.11.059.19l.815.806c.411.406.562.957.53 1.456a4.709 4.709 0 0 0 0 .582c.032.499-.119 1.05-.53 1.456l-.815.806c-.081.08-.073.159-.059.19.162.346.353.677.573.989.02.03.085.076.195.046l1.102-.303c.56-.153 1.113-.008 1.53.27.161.107.328.204.501.29.447.222.85.629.997 1.189l.289 1.105c.029.109.101.143.137.146a6.6 6.6 0 0 0 1.142 0c.036-.003.108-.036.137-.146l.289-1.105c.147-.561.549-.967.998-1.189.173-.086.34-.183.5-.29.417-.278.97-.423 1.529-.27l1.103.303c.109.029.175-.016.195-.045.22-.313.411-.644.573-.99.014-.031.021-.11-.059-.19l-.815-.806c-.411-.406-.562-.957-.53-1.456a4.709 4.709 0 0 0 0-.582c-.032-.499.119-1.05.53-1.456l.815-.806c.081-.08.073-.159.059-.19a6.464 6.464 0 0 0-.573-.989c-.02-.03-.085-.076-.195-.046l-1.102.303c-.56.153-1.113.008-1.53-.27a4.44 4.44 0 0 0-.501-.29c-.447-.222-.85-.629-.997-1.189l-.289-1.105c-.029-.11-.101-.143-.137-.146a6.6 6.6 0 0 0-1.142 0ZM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM9.5 8a1.5 1.5 0 1 0-3.001.001A1.5 1.5 0 0 0 9.5 8Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="lock-color-fg-muted">
-              <svg height="16" class="octicon octicon-lock color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M4 4a4 4 0 0 1 8 0v2h.25c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 12.25 15h-8.5A1.75 1.75 0 0 1 2 13.25v-5.5C2 6.784 2.784 6 3.75 6H4Zm8.25 3.5h-8.5a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25ZM10.5 6V4a2.5 2.5 0 1 0-5 0v2Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="moon-color-fg-muted">
-              <svg height="16" class="octicon octicon-moon color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786Zm1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="person-color-fg-muted">
-              <svg height="16" class="octicon octicon-person color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="pencil-color-fg-muted">
-              <svg height="16" class="octicon octicon-pencil color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="issue-opened-open">
-              <svg height="16" class="octicon octicon-issue-opened open" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="git-pull-request-draft-color-fg-muted">
-              <svg height="16" class="octicon octicon-git-pull-request-draft color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M3.25 1A2.25 2.25 0 0 1 4 5.372v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.251 2.251 0 0 1 3.25 1Zm9.5 14a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5ZM2.5 3.25a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0ZM3.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm9.5 0a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM14 7.5a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Zm0-4.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="search-color-fg-muted">
-              <svg height="16" class="octicon octicon-search color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="sun-color-fg-muted">
-              <svg height="16" class="octicon octicon-sun color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-1.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0ZM8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0ZM3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8Zm13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8Zm-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13Zm3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061ZM2.343 2.343a.75.75 0 0 1 1.061 0l1.06 1.061a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.06-1.06a.75.75 0 0 1 0-1.06Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="sync-color-fg-muted">
-              <svg height="16" class="octicon octicon-sync color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="trash-color-fg-muted">
-              <svg height="16" class="octicon octicon-trash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="key-color-fg-muted">
-              <svg height="16" class="octicon octicon-key color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M10.5 0a5.499 5.499 0 1 1-1.288 10.848l-.932.932a.749.749 0 0 1-.53.22H7v.75a.749.749 0 0 1-.22.53l-.5.5a.749.749 0 0 1-.53.22H5v.75a.749.749 0 0 1-.22.53l-.5.5a.749.749 0 0 1-.53.22h-2A1.75 1.75 0 0 1 0 14.25v-2c0-.199.079-.389.22-.53l4.932-4.932A5.5 5.5 0 0 1 10.5 0Zm-4 5.5c-.001.431.069.86.205 1.269a.75.75 0 0 1-.181.768L1.5 12.56v1.69c0 .138.112.25.25.25h1.69l.06-.06v-1.19a.75.75 0 0 1 .75-.75h1.19l.06-.06v-1.19a.75.75 0 0 1 .75-.75h1.19l1.023-1.025a.75.75 0 0 1 .768-.18A4 4 0 1 0 6.5 5.5ZM11 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="comment-discussion-color-fg-muted">
-              <svg height="16" class="octicon octicon-comment-discussion color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="bell-color-fg-muted">
-              <svg height="16" class="octicon octicon-bell color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M8 16a2 2 0 0 0 1.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 0 0 8 16ZM3 5a5 5 0 0 1 10 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.519 1.519 0 0 1 13.482 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947Zm5-3.5A3.5 3.5 0 0 0 4.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01l.001.006c0 .002.002.004.004.006l.006.004.007.001h10.964l.007-.001.006-.004.004-.006.001-.007a.017.017 0 0 0-.003-.01l-1.703-2.554a1.745 1.745 0 0 1-.294-.97V5A3.5 3.5 0 0 0 8 1.5Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="bell-slash-color-fg-muted">
-              <svg height="16" class="octicon octicon-bell-slash color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="m4.182 4.31.016.011 10.104 7.316.013.01 1.375.996a.75.75 0 1 1-.88 1.214L13.626 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947V5.305L.31 3.357a.75.75 0 1 1 .88-1.214Zm7.373 7.19L4.5 6.391v1.556c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01c0 .005.002.009.005.012l.006.004.007.001ZM8 1.5c-.997 0-1.895.416-2.534 1.086A.75.75 0 1 1 4.38 1.55 5 5 0 0 1 13 5v2.373a.75.75 0 0 1-1.5 0V5A3.5 3.5 0 0 0 8 1.5ZM8 16a2 2 0 0 1-1.985-1.75c-.017-.137.097-.25.235-.25h3.5c.138 0 .252.113.235.25A2 2 0 0 1 8 16Z"></path></svg>
-            </div>
-            <div data-targets="command-palette-page-stack.localOcticons" data-octicon-id="paintbrush-color-fg-muted">
-              <svg height="16" class="octicon octicon-paintbrush color-fg-muted" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path d="M11.134 1.535c.7-.509 1.416-.942 2.076-1.155.649-.21 1.463-.267 2.069.34.603.601.568 1.411.368 2.07-.202.668-.624 1.39-1.125 2.096-1.011 1.424-2.496 2.987-3.775 4.249-1.098 1.084-2.132 1.839-3.04 2.3a3.744 3.744 0 0 1-1.055 3.217c-.431.431-1.065.691-1.657.861-.614.177-1.294.287-1.914.357A21.151 21.151 0 0 1 .797 16H.743l.007-.75H.749L.742 16a.75.75 0 0 1-.743-.742l.743-.008-.742.007v-.054a21.25 21.25 0 0 1 .13-2.284c.067-.647.187-1.287.358-1.914.17-.591.43-1.226.86-1.657a3.746 3.746 0 0 1 3.227-1.054c.466-.893 1.225-1.907 2.314-2.982 1.271-1.255 2.833-2.75 4.245-3.777ZM1.62 13.089c-.051.464-.086.929-.104 1.395.466-.018.932-.053 1.396-.104a10.511 10.511 0 0 0 1.668-.309c.526-.151.856-.325 1.011-.48a2.25 2.25 0 1 0-3.182-3.182c-.155.155-.329.485-.48 1.01a10.515 10.515 0 0 0-.309 1.67Zm10.396-10.34c-1.224.89-2.605 2.189-3.822 3.384l1.718 1.718c1.21-1.205 2.51-2.597 3.387-3.833.47-.662.78-1.227.912-1.662.134-.444.032-.551.009-.575h-.001V1.78c-.014-.014-.113-.113-.548.027-.432.14-.995.462-1.655.942Zm-4.832 7.266-.001.001a9.859 9.859 0 0 0 1.63-1.142L7.155 7.216a9.7 9.7 0 0 0-1.161 1.607c.482.302.889.71 1.19 1.192Z"></path></svg>
-            </div>
-
-            <command-palette-item-group
-              data-group-id="top"
-              data-group-title="Top result"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="0"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="commands"
-              data-group-title="Commands"
-              data-group-hint="Type &gt; to filter"
-              data-group-limits="{&quot;static_items_page&quot;:50,&quot;issue&quot;:50,&quot;pull_request&quot;:50,&quot;discussion&quot;:50}"
-              data-default-priority="1"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="global_commands"
-              data-group-title="Global Commands"
-              data-group-hint="Type &gt; to filter"
-              data-group-limits="{&quot;issue&quot;:0,&quot;pull_request&quot;:0,&quot;discussion&quot;:0}"
-              data-default-priority="2"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="this_page"
-              data-group-title="This Page"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="3"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="files"
-              data-group-title="Files"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="4"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="default"
-              data-group-title="Default"
-              data-group-hint=""
-              data-group-limits="{&quot;static_items_page&quot;:50}"
-              data-default-priority="5"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="pages"
-              data-group-title="Pages"
-              data-group-hint=""
-              data-group-limits="{&quot;repository&quot;:10}"
-              data-default-priority="6"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="access_policies"
-              data-group-title="Access Policies"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="7"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="organizations"
-              data-group-title="Organizations"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="8"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="repositories"
-              data-group-title="Repositories"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="9"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="references"
-              data-group-title="Issues, pull requests, and discussions"
-              data-group-hint="Type # to filter"
-              data-group-limits="{}"
-              data-default-priority="10"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="teams"
-              data-group-title="Teams"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="11"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="users"
-              data-group-title="Users"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="12"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="memex_projects"
-              data-group-title="Projects"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="13"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="projects"
-              data-group-title="Projects (classic)"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="14"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="footer"
-              data-group-title="Footer"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="15"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="modes_help"
-              data-group-title="Modes"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="16"
-            >
-            </command-palette-item-group>
-            <command-palette-item-group
-              data-group-id="filters_help"
-              data-group-title="Use filters in issues, pull requests, discussions, and projects"
-              data-group-hint=""
-              data-group-limits="{}"
-              data-default-priority="17"
-            >
-            </command-palette-item-group>
-
-            <command-palette-page
-              data-page-title="anthonyromrell"
-              data-scope-id="MDQ6VXNlcjM1MzM0Njg="
-              data-scope-type="owner"
-              data-targets="command-palette-page-stack.defaultPages"
-              hidden
-            >
-            </command-palette-page>
-            <command-palette-page
-              data-page-title="3DEssentialsResources"
-              data-scope-id="MDEwOlJlcG9zaXRvcnkyMDAzMDk3NQ=="
-              data-scope-type="repository"
-              data-targets="command-palette-page-stack.defaultPages"
-              hidden
-            >
-            </command-palette-page>
-        </div>
-
-        <command-palette-page data-is-root>
-        </command-palette-page>
-          <command-palette-page
-            data-page-title="anthonyromrell"
-            data-scope-id="MDQ6VXNlcjM1MzM0Njg="
-            data-scope-type="owner"
-          >
-          </command-palette-page>
-          <command-palette-page
-            data-page-title="3DEssentialsResources"
-            data-scope-id="MDEwOlJlcG9zaXRvcnkyMDAzMDk3NQ=="
-            data-scope-type="repository"
-          >
-          </command-palette-page>
-      </command-palette-page-stack>
-
-      <server-defined-provider data-type="search-links" data-targets="command-palette.serverDefinedProviderElements"></server-defined-provider>
-      <server-defined-provider data-type="help" data-targets="command-palette.serverDefinedProviderElements">
-          <command-palette-help
-            data-group="modes_help"
-              data-prefix="#"
-              data-scope-types="[&quot;&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Search for <strong>issues</strong> and <strong>pull requests</strong></span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd">#</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="modes_help"
-              data-prefix="#"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Search for <strong>issues, pull requests, discussions,</strong> and <strong>projects</strong></span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd">#</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="modes_help"
-              data-prefix="@"
-              data-scope-types="[&quot;&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Search for <strong>organizations, repositories,</strong> and <strong>users</strong></span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd">@</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="modes_help"
-              data-prefix="!"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Search for <strong>projects</strong></span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd">!</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="modes_help"
-              data-prefix="/"
-              data-scope-types="[&quot;repository&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Search for <strong>files</strong></span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd">/</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="modes_help"
-              data-prefix="&gt;"
-          >
-            <span data-target="command-palette-help.titleElement">Activate <strong>command mode</strong></span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd">&gt;</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# author:@me"
-          >
-            <span data-target="command-palette-help.titleElement">Search your issues, pull requests, and discussions</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># author:@me</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# author:@me"
-          >
-            <span data-target="command-palette-help.titleElement">Search your issues, pull requests, and discussions</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># author:@me</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# is:pr"
-          >
-            <span data-target="command-palette-help.titleElement">Filter to pull requests</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># is:pr</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# is:issue"
-          >
-            <span data-target="command-palette-help.titleElement">Filter to issues</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># is:issue</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# is:discussion"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Filter to discussions</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># is:discussion</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# is:project"
-              data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          >
-            <span data-target="command-palette-help.titleElement">Filter to projects</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># is:project</kbd>
-              </span>
-          </command-palette-help>
-          <command-palette-help
-            data-group="filters_help"
-              data-prefix="# is:open"
-          >
-            <span data-target="command-palette-help.titleElement">Filter to open issues, pull requests, and discussions</span>
-              <span data-target="command-palette-help.hintElement">
-                <kbd class="hx_kbd"># is:open</kbd>
-              </span>
-          </command-palette-help>
-      </server-defined-provider>
-
-        <server-defined-provider
-          data-type="commands"
-          data-fetch-debounce="0"
-            data-src="/command_palette/commands"
-          data-supported-modes="[]"
-            data-supports-commands
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="prefetched"
-          data-fetch-debounce="0"
-            data-src="/command_palette/jump_to_page_navigation"
-          data-supported-modes="[&quot;&quot;]"
-            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/issues"
-          data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
-            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/jump_to"
-          data-supported-modes="[&quot;@&quot;,&quot;@&quot;]"
-            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/jump_to_members_only"
-          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
-            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="prefetched"
-          data-fetch-debounce="0"
-            data-src="/command_palette/jump_to_members_only_prefetched"
-          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
-            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="files"
-          data-fetch-debounce="0"
-            data-src="/command_palette/files"
-          data-supported-modes="[&quot;/&quot;]"
-            data-supported-scope-types="[&quot;repository&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/discussions"
-          data-supported-modes="[&quot;#&quot;]"
-            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/projects"
-          data-supported-modes="[&quot;#&quot;,&quot;!&quot;]"
-            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="prefetched"
-          data-fetch-debounce="0"
-            data-src="/command_palette/recent_issues"
-          data-supported-modes="[&quot;#&quot;,&quot;#&quot;]"
-            data-supported-scope-types="[&quot;owner&quot;,&quot;repository&quot;,&quot;&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/teams"
-          data-supported-modes="[&quot;@&quot;,&quot;&quot;]"
-            data-supported-scope-types="[&quot;owner&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-        <server-defined-provider
-          data-type="remote"
-          data-fetch-debounce="200"
-            data-src="/command_palette/name_with_owner_repository"
-          data-supported-modes="[&quot;@&quot;,&quot;@&quot;,&quot;&quot;,&quot;&quot;]"
-            data-supported-scope-types="[&quot;&quot;,&quot;owner&quot;]"
-          
-          data-targets="command-palette.serverDefinedProviderElements"
-          ></server-defined-provider>
-    </command-palette>
-  </details-dialog>
-</details>
-
-<div class="position-fixed bottom-0 left-0 ml-5 mb-5 js-command-palette-toasts" style="z-index: 1000">
-  <div hidden class="Toast Toast--loading">
-    <span class="Toast-icon">
-      <svg class="Toast--spinner" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true">
-        <path
-          fill="#959da5"
-          d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"
-        />
-        <path fill="#ffffff" d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"></path>
-      </svg>
-    </span>
-    <span class="Toast-content"></span>
-  </div>
-
-  <div hidden class="anim-fade-in fast Toast Toast--error">
-    <span class="Toast-icon">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-stop">
-    <path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
-</svg>
-    </span>
-    <span class="Toast-content"></span>
-  </div>
-
-  <div hidden class="anim-fade-in fast Toast Toast--warning">
-    <span class="Toast-icon">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-    </span>
-    <span class="Toast-content"></span>
-  </div>
-
-
-  <div hidden class="anim-fade-in fast Toast Toast--success">
-    <span class="Toast-icon">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </span>
-    <span class="Toast-content"></span>
-  </div>
-
-  <div hidden class="anim-fade-in fast Toast">
-    <span class="Toast-icon">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-info">
-    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
-</svg>
-    </span>
-    <span class="Toast-content"></span>
-  </div>
-</div>
-
-
-  <div
-    class="application-main "
-    data-commit-hovercards-enabled
-    data-discussion-hovercards-enabled
-    data-issue-and-pr-hovercards-enabled
-  >
-        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
-    <main id="js-repo-pjax-container" >
-      
-      
-      
-
-
-
-
-
-
-    
-  <div id="repository-container-header" data-turbo-replace hidden></div>
-
-
-
-
-<turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="">
-    <div id="repo-content-pjax-container" class="repository-content " >
-      <a href="https://github.dev/" class="d-none js-github-dev-shortcut" data-hotkey=".,Alt+Meta+≥,Control+Alt+.">Open in github.dev</a>
-  <a href="https://github.dev/" class="d-none js-github-dev-new-tab-shortcut" data-hotkey="Shift+.,Shift+&gt;,&gt;" target="_blank" rel="noopener noreferrer">Open in a new github.dev tab</a>
-    <a class="d-none" data-hotkey=",,Alt+Meta+≤,Control+Alt+," target="_blank" href="/codespaces/new/anthonyromrell/3DEssentialsResources/tree/master?resume=1">Open in codespace</a>
-
-
-
-    
-      
-    
-
-
-
-
-
-<react-app
-  app-name="react-code-view"
-  initial-path="/anthonyromrell/3DEssentialsResources/blob/master/Maya/scenes/ReTopo/undefined"
-  style="min-height: calc(100vh - 62px)"
-  data-ssr="false"
-  data-lazy="false"
-  data-alternate="false"
->
-  
-  <script type="application/json" data-target="react-app.embeddedData">{"payload":{"path":"Maya/scenes/ReTopo/undefined","repo":{"id":20030975,"defaultBranch":"master","name":"3DEssentialsResources","ownerLogin":"anthonyromrell","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2014-05-21T11:46:23.000-06:00","ownerAvatar":"https://avatars.githubusercontent.com/u/3533468?v=4","public":true,"private":false,"isOrgOwned":false},"refInfo":{"name":"master","listCacheKey":"v0:1583432622.0","canEdit":false,"refType":"branch","currentOid":"2fd493f100d6c87b61abf715c0169de9423a8cef"},"currentUser":{"id":143127190,"login":"SnortingBaguette","userEmail":"10994198@uvu.edu"},"fileTree":{"":{"items":[{"name":"AE","path":"AE","contentType":"directory"},{"name":"Maya","path":"Maya","contentType":"directory"},{"name":"MayaBasics","path":"MayaBasics","contentType":"directory"},{"name":"Unity","path":"Unity","contentType":"directory"},{"name":"ZBrush","path":"ZBrush","contentType":"directory"},{"name":"sourceimages","path":"sourceimages","contentType":"directory"},{"name":".gitattributes","path":".gitattributes","contentType":"file"},{"name":".gitignore","path":".gitignore","contentType":"file"}],"totalCount":8}},"fileTreeProcessingTime":1.840586,"foldersToFetch":[],"allShortcutsEnabled":true,"error":{"httpStatus":404,"type":"httpError"}},"title":"File not found","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-83d4418b406d.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-c1cf747dfd6d.js","githubDevUrl":"https://github.dev/","enabled_features":{"code_nav_ui_events":false,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_conversational_ux_direct_connection":true,"copilot_conversational_ux_streaming":false,"copilot_popover_file_editor_header":true,"copilot_smell_icebreaker_ux":false}}}</script>
-  <div data-target="react-app.reactRoot"></div>
-</react-app>
-</turbo-frame>
-
-
-
-  </div>
-
-</turbo-frame>
-
-    </main>
-  </div>
-
-  </div>
-
-          <footer class="footer width-full container-xl p-responsive" role="contentinfo">
-  <h2 class='sr-only'>Footer</h2>
-
-  <div class="position-relative d-flex flex-items-center pb-2 f6 color-fg-muted border-top color-border-muted flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap mt-6 pt-6">
-    <div class="list-style-none d-flex flex-wrap col-0 col-lg-2 flex-justify-start flex-lg-justify-between mb-2 mb-lg-0">
-      <div class="mt-2 mt-lg-0 d-flex flex-items-center">
-        <a aria-label="Homepage" title="GitHub" class="footer-octicon mr-2" href="https://github.com">
-          <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
-    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-</svg>
-</a>        <span>
-        &copy; 2023 GitHub, Inc.
-        </span>
-      </div>
-    </div>
-
-    <nav aria-label='Footer' class="col-12 col-lg-8">
-      <h3 class='sr-only' id='sr-footer-heading'>Footer navigation</h3>
-      <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0" aria-labelledby='sr-footer-heading'>
-          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
-          <li class="mr-3 mr-lg-0"><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
-          <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to help, text:Docs" href="https://docs.github.com">Docs</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://support.github.com?tags=dotcom-footer" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://services.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
-          <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="d-flex flex-justify-center pb-6">
-    <span class="f6 color-fg-muted"></span>
-  </div>
-</footer>
-
-
-
-
-  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden>
-    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
-    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
-</svg>
-    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-    </button>
-    You can’t perform that action at this time.
-  </div>
-
-    <template id="site-details-dialog">
-  <details class="details-reset details-overlay details-overlay-dark lh-default color-fg-default hx_rsm" open>
-    <summary role="button" aria-label="Close dialog"></summary>
-    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
-      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
-        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
-    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-</svg>
-      </button>
-      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
-    </details-dialog>
-  </details>
-</template>
-
-    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
-  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;">
-  </div>
-</div>
-
-    <template id="snippet-clipboard-copy-button">
-  <div class="zeroclipboard-container position-absolute right-0 top-0">
-    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </clipboard-copy>
-  </div>
-</template>
-<template id="snippet-clipboard-copy-button-unpositioned">
-  <div class="zeroclipboard-container">
-    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w">
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
-    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
-</svg>
-      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
-    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
-</svg>
-    </clipboard-copy>
-  </div>
-</template>
-
-
-    <style>
-      .user-mention[href$="/SnortingBaguette"] {
-        color: var(--color-user-mention-fg);
-        background-color: var(--color-user-mention-bg);
-        border-radius: 2px;
-        margin-left: -2px;
-        margin-right: -2px;
-        padding: 0 2px;
-      }
-    </style>
-
-
-    </div>
-
-    <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite" ></div>
-  </body>
-</html>
-
+//Maya ASCII 2024 scene
+//Name: BoolStart.ma
+//Last modified: Sun, Oct 08, 2023 11:44:18 PM
+//Codeset: 1252
+requires maya "2024";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.3.1.1";
+requires "mtoa" "4.0.3";
+currentUnit -l centimeter -a degree -t film;
+fileInfo "application" "maya";
+fileInfo "product" "Maya 2024";
+fileInfo "version" "2024";
+fileInfo "cutIdentifier" "202304191415-7fa20164c6";
+fileInfo "osv" "Windows 10 Home v2009 (Build: 19045)";
+fileInfo "UUID" "8D0C6046-4E0B-E0A3-C494-21881293F856";
+createNode transform -s -n "persp";
+	rename -uid "2F96C5CC-CF48-3364-978F-BF80661D753F";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" -0.63553802551652971 -3.2977714478472007 -6.5080172332682942 ;
+	setAttr ".r" -type "double3" 37.461647369449246 913.79999999969777 0 ;
+createNode camera -s -n "perspShape" -p "persp";
+	rename -uid "F7E47E0A-8A46-F757-7132-5EBE985BE8D9";
+	setAttr -k off ".v" no;
+	setAttr ".fl" 34.999999999999986;
+	setAttr ".coi" 9.8802826393791001;
+	setAttr ".imn" -type "string" "persp";
+	setAttr ".den" -type "string" "persp_depth";
+	setAttr ".man" -type "string" "persp_mask";
+	setAttr ".hc" -type "string" "viewSet -p %camera";
+	setAttr ".ai_translator" -type "string" "perspective";
+createNode transform -s -n "top";
+	rename -uid "056BCCEB-DD4A-7DA2-3F40-E793EE84158D";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 0 1000.1 0 ;
+	setAttr ".r" -type "double3" -89.999999999999986 0 0 ;
+createNode camera -s -n "topShape" -p "top";
+	rename -uid "2F26654E-854F-2937-1F0B-C0B9AFB9EC15";
+	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
+	setAttr ".coi" 1000.1;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "top";
+	setAttr ".den" -type "string" "top_depth";
+	setAttr ".man" -type "string" "top_mask";
+	setAttr ".hc" -type "string" "viewSet -t %camera";
+	setAttr ".o" yes;
+	setAttr ".ai_translator" -type "string" "orthographic";
+createNode transform -s -n "front";
+	rename -uid "097A9B14-F74A-E155-40E4-5B9F09F0A98E";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 0 0 1000.1 ;
+createNode camera -s -n "frontShape" -p "front";
+	rename -uid "508170CC-8F41-2912-56F6-F499DA7A1A0A";
+	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
+	setAttr ".coi" 1000.1;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "front";
+	setAttr ".den" -type "string" "front_depth";
+	setAttr ".man" -type "string" "front_mask";
+	setAttr ".hc" -type "string" "viewSet -f %camera";
+	setAttr ".o" yes;
+	setAttr ".ai_translator" -type "string" "orthographic";
+createNode transform -s -n "side";
+	rename -uid "EAE55C16-C34C-5494-0AD8-50BB6CC98BAB";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" 1000.1 0 0 ;
+	setAttr ".r" -type "double3" 0 89.999999999999986 0 ;
+createNode camera -s -n "sideShape" -p "side";
+	rename -uid "ECD76B06-964F-EB2C-2F45-3FBC8289E5A1";
+	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
+	setAttr ".coi" 1000.1;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "side";
+	setAttr ".den" -type "string" "side_depth";
+	setAttr ".man" -type "string" "side_mask";
+	setAttr ".hc" -type "string" "viewSet -s %camera";
+	setAttr ".o" yes;
+	setAttr ".ai_translator" -type "string" "orthographic";
+createNode transform -n "pSphere1";
+	rename -uid "4E38C5DA-0743-E47E-7A31-6AB6432F5E3F";
+	setAttr ".t" -type "double3" 0 4.3508498578903048 0 ;
+	setAttr ".s" -type "double3" 2.4321519078516833 2.4321519078516833 2.4321519078516833 ;
+createNode transform -n "transform2" -p "pSphere1";
+	rename -uid "6650575C-9343-3609-A647-87BC67D3084F";
+	setAttr ".v" no;
+createNode mesh -n "pSphereShape1" -p "transform2";
+	rename -uid "7A6BC560-734E-1333-074F-9F89583991C5";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".ai_translator" -type "string" "polymesh";
+createNode transform -n "pCube1";
+	rename -uid "DD262439-2243-5BD9-986E-C0AA0A413EE6";
+	setAttr ".t" -type "double3" 0 2.9045113631514816 2.0650155850174059 ;
+	setAttr ".s" -type "double3" 3.0264992035144509 3.0264992035144509 3.0264992035144509 ;
+createNode transform -n "transform1" -p "pCube1";
+	rename -uid "4FE1F69E-4747-E920-B486-14A961A430BA";
+	setAttr ".v" no;
+createNode mesh -n "pCubeShape1" -p "transform1";
+	rename -uid "38AD999E-8B49-4D33-E54F-4CBED9B7D856";
+	setAttr -k off ".v";
+	setAttr ".io" yes;
+	setAttr -s 2 ".iog[0].og";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".ai_translator" -type "string" "polymesh";
+createNode transform -n "pSphere2";
+	rename -uid "05492E98-084B-5E07-5A98-209F11A8C777";
+	setAttr ".rp" -type "double3" -2.384185791015625e-07 4.0871316194534302 0.57305610179901123 ;
+	setAttr ".sp" -type "double3" -2.384185791015625e-07 4.0871316194534302 0.57305610179901123 ;
+createNode mesh -n "pSphere2Shape" -p "pSphere2";
+	rename -uid "6A90DEC9-9345-0722-F833-AEB7618892EB";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".ai_translator" -type "string" "polymesh";
+createNode transform -n "polySurface1";
+	rename -uid "34791D81-4970-D147-9AC3-2198B188B5FD";
+createNode mesh -n "polySurfaceShape1" -p "polySurface1";
+	rename -uid "BAF51765-4BE5-A56A-6AE6-19A0D8E49A62";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode lightLinker -s -n "lightLinker1";
+	rename -uid "D5AAC217-476D-6611-732A-C18F38A98979";
+	setAttr -s 2 ".lnk";
+	setAttr -s 2 ".slnk";
+createNode shapeEditorManager -n "shapeEditorManager";
+	rename -uid "50E02648-4EF6-21E3-9DD8-DA88725369EF";
+createNode poseInterpolatorManager -n "poseInterpolatorManager";
+	rename -uid "4FFE2161-41B4-8FBB-54F8-EA809DCD4B1D";
+createNode displayLayerManager -n "layerManager";
+	rename -uid "0AE86CCE-453E-FC0D-D2E0-5FB14B72D964";
+createNode displayLayer -n "defaultLayer";
+	rename -uid "0414B539-DB48-25FD-A367-6388F5147D34";
+	setAttr ".ufem" -type "stringArray" 0  ;
+createNode renderLayerManager -n "renderLayerManager";
+	rename -uid "C6728DCC-4E58-A4C9-97D5-3F9C09B012B5";
+createNode renderLayer -n "defaultRenderLayer";
+	rename -uid "F49E1556-B14E-655E-2CDC-89B1DC9F3607";
+	setAttr ".g" yes;
+createNode polySphere -n "polySphere1";
+	rename -uid "44CE3B01-6F4E-EC63-CE9F-329B1B359802";
+createNode polyCube -n "polyCube1";
+	rename -uid "AC1F02AC-2744-36F1-A03B-6A955F66B97C";
+	setAttr ".cuv" 4;
+createNode polyCBoolOp -n "polyCBoolOp1";
+	rename -uid "0D155417-024C-93A9-0E60-38A489F66E05";
+	setAttr -s 2 ".ip";
+	setAttr -s 2 ".im";
+	setAttr ".cls" 1;
+	setAttr ".mg" -type "Int32Array" 2 1 -3 ;
+createNode groupId -n "groupId1";
+	rename -uid "F7F0DDC5-6A41-B44A-63E9-A5B78158D872";
+	setAttr ".ihi" 0;
+createNode groupParts -n "groupParts1";
+	rename -uid "5D489415-B24B-C46C-1E45-508A9DB33A31";
+	setAttr ".ihi" 0;
+	setAttr ".ic" -type "componentList" 1 "f[0:399]";
+createNode groupId -n "groupId2";
+	rename -uid "B632ED64-164E-7B55-97FF-78846DCABCF4";
+	setAttr ".ihi" 0;
+createNode groupId -n "groupId3";
+	rename -uid "ECBF4388-6B4E-DE4E-55E1-C09400952ED6";
+	setAttr ".ihi" 0;
+createNode groupParts -n "groupParts2";
+	rename -uid "8FAC2B01-E748-080B-ADD0-84A65ECB4B8D";
+	setAttr ".ihi" 0;
+	setAttr ".ic" -type "componentList" 1 "f[0:5]";
+createNode groupId -n "groupId4";
+	rename -uid "3AA21882-E84C-3ACF-D93A-528B73564200";
+	setAttr ".ihi" 0;
+createNode groupId -n "groupId5";
+	rename -uid "1195ADAC-5B41-32DC-7862-8CA58E8FA447";
+	setAttr ".ihi" 0;
+createNode script -n "uiConfigurationScriptNode";
+	rename -uid "4D397813-9341-2CDE-A017-10A0292571FC";
+	setAttr ".b" -type "string" (
+		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n"
+		+ "            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n"
+		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 797\n            -height 381\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n"
+		+ "            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n"
+		+ "            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n"
+		+ "            -shadows 0\n            -captureSequenceNumber -1\n            -width 796\n            -height 380\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n"
+		+ "            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n"
+		+ "            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n"
+		+ "            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 797\n            -height 380\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n"
+		+ "        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 1\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n"
+		+ "            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n"
+		+ "            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1600\n            -height 806\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n"
+		+ "            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n"
+		+ "            -longNames 0\n            -niceNames 1\n            -selectCommand \"<function selCom at 0x7f29c5c04aa0>\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n"
+		+ "            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -showUfeItems 1\n"
+		+ "            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n"
+		+ "                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n"
+		+ "                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showPlayRangeShades \"on\" \n                -lockPlayRangeShades \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -keyMinScale 1\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -preSelectionHighlight 0\n                -constrainDrag 0\n                -valueLinesToggle 1\n                -highlightAffectedCurves 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n"
+		+ "                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n"
+		+ "                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -showSummary 1\n                -showScene 0\n                -hierarchyBelow 0\n                -showTicks 1\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n"
+		+ "            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n"
+		+ "                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n"
+		+ "                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n"
+		+ "                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1600\\n    -height 806\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1600\\n    -height 806\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
+	setAttr ".st" 3;
+createNode script -n "sceneConfigurationScriptNode";
+	rename -uid "2A74DD80-7C44-B767-4E8B-66AEB7C8CA54";
+	setAttr ".b" -type "string" "playbackOptions -min 1 -max 120 -ast 1 -aet 200 ";
+	setAttr ".st" 6;
+createNode aiOptions -s -n "defaultArnoldRenderOptions";
+	rename -uid "51B60ADC-4967-0952-C77B-2798754698F8";
+	setAttr ".version" -type "string" "5.3.1.1";
+createNode aiAOVFilter -s -n "defaultArnoldFilter";
+	rename -uid "5F9AAE6C-440E-43BD-ADE7-5F887E31FA24";
+	setAttr ".ai_translator" -type "string" "gaussian";
+createNode aiAOVDriver -s -n "defaultArnoldDriver";
+	rename -uid "10614D65-4451-5293-ACB3-C0845E3C2211";
+	setAttr ".ai_translator" -type "string" "exr";
+createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
+	rename -uid "1BA95875-43B8-6A8B-F683-CA971BF898CA";
+	setAttr ".output_mode" 0;
+	setAttr ".ai_translator" -type "string" "maya";
+createNode polyCreateFace -n "polyCreateFace1";
+	rename -uid "37996F72-4604-B962-620B-D28B26DC553D";
+	setAttr -s 4 ".v[0:3]" -type "float3"  1.504985 4.7229128 1.851349 
+		1.4127361 4.7264051 1.9432141 1.4293621 4.4177608 1.965951 1.514122 4.4154968 1.876007;
+	setAttr ".l[0]"  4;
+	setAttr ".tx" 1;
+createNode polyAppendVertex -n "polyAppendVertex1";
+	rename -uid "0A14EC94-4289-99C8-2654-97ACA7857F20";
+	setAttr ".uopa" yes;
+	setAttr -s 3 ".v[0:2]" -type "float3"  1.51325 4.3494549 1.88438 
+		1.9688129 4.35041 1.42723 1.964914 4.4013672 1.426307;
+	setAttr -s 4 ".d[0:3]"  3 -1 -1 -1;
+	setAttr ".tx" 2;
+createNode polyExtrudeEdge -n "polyExtrudeEdge1";
+	rename -uid "2669C97A-47ED-34C3-98DE-19A8337CCFFC";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[3]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.5095534 4.5692048 1.863678 ;
+	setAttr ".rs" 50822;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 1.504984974861145 4.415496826171875 1.8513489961624146 ;
+	setAttr ".cbx" -type "double3" 1.5141220092773438 4.7229127883911133 1.8760069608688354 ;
+createNode polyTweak -n "polyTweak1";
+	rename -uid "477A2A9A-4D51-BD9F-200F-809804D3EB15";
+	setAttr ".uopa" yes;
+	setAttr -s 7 ".tk[6]" -type "float3"  -0.00052678585 0.0084967613 -0.00042045116;
+createNode polyMergeVert -n "polyMergeVert1";
+	rename -uid "B94901F3-4A85-0459-5572-28A8A9CE44E7";
+	setAttr ".ics" -type "componentList" 1 "vtx[6:7]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak2";
+	rename -uid "38D359F3-473A-669C-5691-118B6ABF75D4";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[7:8]" -type "float3"  0.45026517 -0.0056328773 -0.45012045
+		 0.4479692 0.001742363 -0.45692289;
+createNode polyAppendVertex -n "polyAppendVertex2";
+	rename -uid "C93C08C8-47F8-3669-C14E-EBB2A07C4A3D";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.943244 3.968091 1.411148 
+		1.51325 3.9667239 1.8424079;
+	setAttr -s 4 ".d[0:3]"  -1 5 4 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak3";
+	rename -uid "9DD8448C-43BE-E782-56EF-819A89AAE3CE";
+	setAttr ".uopa" yes;
+	setAttr -s 8 ".tk[0:7]" -type "float3"  -0.0029799938 0.010009766
+		 0.0015188456 -0.00018191338 0.0049676895 -0.00037574768 0 0 0 0 0 0 0 0 0 0 0 0 0
+		 0 0 -0.0071998835 0.00826931 0.012151957;
+createNode polyAppendVertex -n "polyAppendVertex3";
+	rename -uid "7329B741-47F2-2BC7-35FD-2AB702567B2E";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.869001 3.594897 1.35943 
+		1.5139951 3.5972049 1.715771;
+	setAttr -s 4 ".d[0:3]"  -1 8 9 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex4";
+	rename -uid "B719A656-4BEE-5150-6868-698A49CE7188";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.51325 3.24457 1.5142961 
+		1.7521451 3.244561 1.273001;
+	setAttr -s 4 ".d[0:3]"  -1 -1 10 11;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex5";
+	rename -uid "873D5A2C-4688-9F2F-6BAC-28BA5F296FD9";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.513783 2.921819 1.235111 
+		1.5911829 2.9201231 1.155767;
+	setAttr -s 4 ".d[0:3]"  13 12 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex6";
+	rename -uid "C7B3AA2A-4B7A-6B8C-227F-5F990E2C15E8";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.515404 2.8110299 1.1015069 
+		1.57542 2.856811 1.069064;
+	setAttr -s 4 ".d[0:3]"  -1 -1 15 14;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex7";
+	rename -uid "9EBB1D65-4932-51B6-29C8-71B5F04032BB";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.51325 2.625139 0.77308702 
+		1.546418 2.6653571 0.77024102;
+	setAttr -s 4 ".d[0:3]"  -1 -1 17 16;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex8";
+	rename -uid "FD527FE7-4BE9-6EFD-8AB9-E095807ED304";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.511761 2.5428419 0.54981703 
+		1.5452091 2.5594909 0.526582;
+	setAttr -s 4 ".d[0:3]"  -1 -1 19 18;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex9";
+	rename -uid "1032B550-451D-8C4A-A71E-61AB16485F41";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.307608 2.3789849 0.55176598 
+		1.354622 2.3819089 0.446991;
+	setAttr -s 4 ".d[0:3]"  -1 -1 21 20;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak4";
+	rename -uid "38B38AE3-4B4C-6269-BD2F-27817D129D25";
+	setAttr ".uopa" yes;
+	setAttr ".tk[21]" -type "float3"  0.088496566 0.06946373 0.0013854504;
+createNode deleteComponent -n "deleteComponent1";
+	rename -uid "925349C8-4D56-C085-1C43-0B990631BD1B";
+	setAttr ".dc" -type "componentList" 1 "f[8]";
+createNode deleteComponent -n "deleteComponent2";
+	rename -uid "29ACC563-4E87-1A20-D95B-86AEF635708F";
+	setAttr ".dc" -type "componentList" 1 "f[7]";
+createNode deleteComponent -n "deleteComponent3";
+	rename -uid "B237D983-490C-D41D-8DB4-83B4049B0E64";
+	setAttr ".dc" -type "componentList" 1 "f[7]";
+createNode polyAppendVertex -n "polyAppendVertex10";
+	rename -uid "94627610-435B-3736-DF2C-AE9C9A4A6B81";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.51578 2.812557 1.102952 
+		1.8678401 2.9168179 0.60620099;
+	setAttr -s 4 ".d[0:3]"  15 -1 17 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex11";
+	rename -uid "3E13A0F2-46DC-F394-9B13-D3B0D463472B";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.625237 0.77318102;
+	setAttr -s 4 ".d[0:3]"  16 17 20 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex12";
+	rename -uid "DB82059F-478F-FB0F-7222-BD9A6658F078";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.866611 1.17609;
+	setAttr -s 4 ".d[0:3]"  -1 20 15 14;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex13";
+	rename -uid "D38B5AEF-4128-8A4C-BB6F-C3B44150EB4D";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.94887298 2.182164 0.55176598 
+		1.044847 2.1825421 0.34504601;
+	setAttr -s 4 ".d[0:3]"  19 18 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex14";
+	rename -uid "2315E27D-413D-8E36-CFEE-E1925FB0117C";
+	setAttr ".uopa" yes;
+	setAttr -s 4 ".v[0:3]" -type "float3"  0.712093 2.037626 0.236549 
+		0.84403199 2.094111 0.274699 0.75925899 2.113086 0.55176598 0.606794 2.0366449 0.43432301;
+	setAttr -s 4 ".d[0:3]"  -1 -1 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex15";
+	rename -uid "14035A1B-4517-D6A3-359D-6693FE2876D6";
+	setAttr ".uopa" yes;
+	setAttr -s 4 ".d[0:3]"  27 25 24 28;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex16";
+	rename -uid "BD87B217-4898-496D-5BD6-EBB5206EB3C6";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.50309998 2.0389349 0.55074602 
+		0.55980599 2.0386059 0.49293101;
+	setAttr -s 4 ".d[0:3]"  29 28 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex17";
+	rename -uid "135DCD7A-4F3E-C3CF-E380-7AB4132812FD";
+	setAttr ".uopa" yes;
+	setAttr -s 3 ".v[0:2]" -type "float3"  0.225474 1.949306 0.309836 
+		0.266256 1.949373 0.26944301 0.40299201 2.0204301 0.54612601;
+	setAttr -s 4 ".d[0:3]"  -1 -1 30 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak5";
+	rename -uid "537C48A9-44CF-6956-373D-E48597E66AB6";
+	setAttr ".uopa" yes;
+	setAttr ".tk[29]" -type "float3"  -0.0030212402 1.0967255e-05 0.0054247975;
+createNode polyAppendVertex -n "polyAppendVertex18";
+	rename -uid "BB707F5B-42A5-38EF-A126-8F8C534207FE";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.28511399 1.949857 0.25340399 
+		0.30812699 1.9495209 0.22843599;
+	setAttr -s 4 ".d[0:3]"  29 31 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex19";
+	rename -uid "167AD160-4CD1-3D48-56D4-5DA193BC23C9";
+	setAttr ".uopa" yes;
+	setAttr -s 4 ".d[0:3]"  31 30 33 35;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex20";
+	rename -uid "76105ABB-4568-1252-7B9D-1FA6A2B0525B";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.119243 1.949452 0.36474401 
+		0.181319 1.9961129 0.54856098;
+	setAttr -s 4 ".d[0:3]"  -1 32 34 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak6";
+	rename -uid "93CE5D0E-460B-FFAA-9515-258039115BA5";
+	setAttr ".uopa" yes;
+	setAttr ".tk[34]" -type "float3"  0.002060324 -0.015065193 0.0056399107;
+createNode polyAppendVertex -n "polyAppendVertex21";
+	rename -uid "CAE6C53B-454C-B97D-8C09-A7A8CECFB3FA";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.00110344 1.949681 0.38462901 
+		-0.0066786902 1.9898469 0.55104899;
+	setAttr -s 4 ".d[0:3]"  -1 37 38 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex22";
+	rename -uid "5CCEACED-431B-5E4E-5B70-87BAA1C1972E";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.116135 1.949086 0.36392799 
+		-0.181602 1.996408 0.54977602;
+	setAttr -s 4 ".d[0:3]"  -1 39 40 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex23";
+	rename -uid "4D933BF1-4903-3C30-651A-D283EE40207B";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.221597 1.949397 0.312334 
+		-0.403332 2.021425 0.55176598;
+	setAttr -s 4 ".d[0:3]"  -1 41 42 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex24";
+	rename -uid "C071030E-409E-72D2-3AA9-428233E33CDE";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.49847499 2.0286069 0.55176598 
+		-0.30509901 1.9486001 0.225609;
+	setAttr -s 4 ".d[0:3]"  44 -1 -1 43;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex25";
+	rename -uid "B2386B06-4191-C999-08A7-9DBD2B53A87F";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.74535501 2.106333 0.55176598 
+		-0.60737598 2.0379789 0.44324699;
+	setAttr -s 4 ".d[0:3]"  45 -1 -1 46;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex26";
+	rename -uid "9CAE5642-40A5-7157-AD74-BF939B65A816";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.940081 2.1737001 0.55176598 
+		-0.64494699 2.0376389 0.36845201;
+	setAttr -s 4 ".d[0:3]"  47 -1 -1 48;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak7";
+	rename -uid "15C79461-4C95-B105-3277-02A1198986E0";
+	setAttr ".uopa" yes;
+	setAttr ".tk[47]" -type "float3"  -0.014883459 0.0018951893 -5.9604645e-08;
+createNode polyAppendVertex -n "polyAppendVertex27";
+	rename -uid "D584F76E-49F3-7CD1-DC8C-6689EF7B5584";
+	setAttr ".uopa" yes;
+	setAttr -s 3 ".v[0:2]" -type "float3"  -1.0471801 2.183419 0.34507501 
+		-1.307207 2.385504 0.55049598 -1.360306 2.3843429 0.44332701;
+	setAttr -s 4 ".d[0:3]"  -1 49 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex28";
+	rename -uid "041F4807-4975-7305-1B8B-C9ABEA2FF58E";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 2.54514 0.55392897 
+		-1.5302041 2.5361481 0.49538401;
+	setAttr -s 4 ".d[0:3]"  53 52 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex29";
+	rename -uid "C13524BC-40EB-E6B0-FE82-54AF18627ADC";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 2.628401 0.77357501 
+		-1.627524 2.6283979 0.54055399;
+	setAttr -s 4 ".d[0:3]"  -1 -1 55 54;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex30";
+	rename -uid "365DD07F-4EB3-9402-8F6F-68A34AC2B340";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 2.8058231 1.099436 
+		-1.870332 2.9227221 0.61197501;
+	setAttr -s 4 ".d[0:3]"  56 -1 -1 57;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak8";
+	rename -uid "BB0D063C-4EB9-BF24-1FEE-E29DB297E2BE";
+	setAttr ".uopa" yes;
+	setAttr ".tk[57]" -type "float3"  -0.0083887577 0.0031065941 -0.0088576078;
+createNode polyAppendVertex -n "polyAppendVertex31";
+	rename -uid "3099A798-4B62-F723-E1FE-56A6BDD4B845";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 2.9207051 1.23693 
+		-1.591447 2.9191029 1.153358;
+	setAttr -s 4 ".d[0:3]"  58 -1 -1 59;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex32";
+	rename -uid "F2CAD104-46A8-7D64-B9CB-26BCE581D5B1";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 3.2416551 1.514897 
+		-1.753549 3.2469649 1.273326;
+	setAttr -s 4 ".d[0:3]"  61 60 -1 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak9";
+	rename -uid "7CF462B6-4304-D8AE-DCA6-5BB5895B47F3";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk";
+	setAttr ".tk[59]" -type "float3" -0.00075829029 -0.0029718876 -0.010481358 ;
+	setAttr ".tk[61]" -type "float3" -0.0025252104 0.0026817322 -0.00024688244 ;
+createNode polyAppendVertex -n "polyAppendVertex33";
+	rename -uid "06A10B05-42E8-C6F3-EB97-94B7FD973FAE";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 3.5972431 1.722681 
+		-1.867825 3.5936861 1.359905;
+	setAttr -s 4 ".d[0:3]"  -1 -1 63 62;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex34";
+	rename -uid "C82BC7E3-404F-03B0-8FE7-DA91F3B5AED2";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 3.969383 1.845924 
+		-1.944458 3.971457 1.410144;
+	setAttr -s 4 ".d[0:3]"  64 -1 -1 65;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex35";
+	rename -uid "98C0E8EE-4F15-C625-E95B-88A1E26DDDFD";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.513577 4.3493161 1.88349 
+		-1.964952 4.350482 1.4322439;
+	setAttr -s 4 ".d[0:3]"  66 -1 -1 67;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex36";
+	rename -uid "A81C53B4-4CCF-F558-375A-C3990EECC109";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.961465 4.4239659 1.4277329 
+		-1.514258 4.4135671 1.876083;
+	setAttr -s 4 ".d[0:3]"  -1 69 68 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak10";
+	rename -uid "9D1B3118-468E-D5AD-5309-9F8CAB65E3CB";
+	setAttr ".uopa" yes;
+	setAttr ".tk[69]" -type "float3"  -0.004114151 -0.0016956329 -0.0057883263;
+createNode polyAppendVertex -n "polyAppendVertex37";
+	rename -uid "11EC9FD9-425E-44D5-7518-68ADD8E4937C";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.505403 4.7244611 1.8507611 
+		-1.944149 4.7223058 1.412111;
+	setAttr -s 4 ".d[0:3]"  71 -1 -1 70;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex38";
+	rename -uid "9FC2CA8D-4BAC-638D-E1F1-B9AC24281DC3";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.414151 4.7280149 1.941623 
+		-1.42826 4.4177608 1.9649611;
+	setAttr -s 4 ".d[0:3]"  -1 72 71 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak11";
+	rename -uid "2F0E7E31-4414-8CF8-4AAF-7F80C37F64EF";
+	setAttr ".uopa" yes;
+	setAttr ".tk[73]" -type "float3"  0.0021933317 0.0097470284 0.0010982752;
+createNode polyAppendVertex -n "polyAppendVertex39";
+	rename -uid "6B64C9DB-402E-01DB-E15E-C49C9BB299DD";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.74398297 4.7269721 2.284169 
+		0.75036103 4.4177608 2.310199;
+	setAttr -s 4 ".d[0:3]"  -1 -1 2 1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak12";
+	rename -uid "3BD646A9-46A5-27E9-3ACC-F6BC1A97F331";
+	setAttr ".uopa" yes;
+	setAttr ".tk[72]" -type "float3"  0.00286901 0.0019488335 0.0026549101;
+createNode polyAppendVertex -n "polyAppendVertex40";
+	rename -uid "BC34315D-4EF6-498B-BA85-BCAF27C4E748";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  0.0074624498 4.7279582 2.4012909 
+		0.00250739 4.4177608 2.429239;
+	setAttr -s 4 ".d[0:3]"  77 76 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex41";
+	rename -uid "7F4AC2FB-4C98-D900-0DC1-A5A8DCFF1867";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.74072802 4.729404 2.2850389 
+		-0.74902201 4.4177608 2.309648;
+	setAttr -s 4 ".d[0:3]"  79 78 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex42";
+	rename -uid "677D9DEA-46EF-A191-FD84-EAA485766CC1";
+	setAttr ".uopa" yes;
+	setAttr -s 4 ".d[0:3]"  74 75 81 80;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex43";
+	rename -uid "73A1B229-4895-4E43-1D21-B0B38B7C3500";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -1.51325 4.4138398 2.026083 
+		-1.455453 4.4177608 2.041893;
+	setAttr -s 4 ".d[0:3]"  71 -1 -1 75;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak13";
+	rename -uid "F258F30A-4676-08B5-C1D1-6E83D2ECC282";
+	setAttr ".uopa" yes;
+	setAttr -s 82 ".tk[78:81]" -type "float3"  -0.011448661 -0.0016760826
+		 0.00068259239 0 0 0 0 0 0 0 0 0;
+createNode polyAppendVertex -n "polyAppendVertex44";
+	rename -uid "947DC03E-4ED7-81CD-0CA6-C5BCB75E2FB3";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  1.455151 4.4177608 2.033159 
+		1.51325 4.4123592 1.995697;
+	setAttr -s 4 ".d[0:3]"  3 2 -1 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex45";
+	rename -uid "9150C388-4709-0841-49DB-02914D2EEF7C";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.77865797 4.4177608 2.3957851;
+	setAttr -s 4 ".d[0:3]"  77 -1 84 2;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex46";
+	rename -uid "886402A7-4839-2974-5BFB-F3B0456F120A";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.0071327998 4.4177608 2.5046289;
+	setAttr -s 4 ".d[0:3]"  79 -1 86 77;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex47";
+	rename -uid "09AD5684-40E3-D758-42B2-B09F41B228BC";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.78665602 4.4177608 2.3821089;
+	setAttr -s 4 ".d[0:3]"  87 79 81 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex48";
+	rename -uid "A99644C3-4397-B14A-0E02-9E8F23CF9CA5";
+	setAttr ".uopa" yes;
+	setAttr -s 4 ".d[0:3]"  88 81 75 83;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex49";
+	rename -uid "18E2CDB1-46CB-62E1-FA71-00B166B6A1C4";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 4.348598 1.979218;
+	setAttr -s 4 ".d[0:3]"  4 3 85 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex50";
+	rename -uid "C8601C58-4B59-393C-389C-B694112F2B2C";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 4.354043 1.922644;
+	setAttr -s 4 ".d[0:3]"  82 71 68 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak14";
+	rename -uid "7C778711-44E7-59D5-E7EF-C69A46D5E160";
+	setAttr ".uopa" yes;
+	setAttr ".tk[45]" -type "float3"  0.0028427839 0.0078954697 -0.0047698021;
+createNode polyAppendVertex -n "polyAppendVertex51";
+	rename -uid "3AF69A76-4540-C472-4078-18B2F93578F0";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 3.9674661 1.88922;
+	setAttr -s 4 ".d[0:3]"  66 -1 90 68;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex52";
+	rename -uid "6031681E-454E-3315-50E3-939951BBA828";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 3.5956841 1.765098;
+	setAttr -s 4 ".d[0:3]"  64 -1 91 66;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex53";
+	rename -uid "573E3719-4034-1A92-FF92-529F9FBBCF08";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 3.225796 1.5529931;
+	setAttr -s 4 ".d[0:3]"  62 -1 92 64;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex54";
+	rename -uid "7603049C-4127-0244-196F-C59E9D326B3B";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 2.9077971 1.284368;
+	setAttr -s 4 ".d[0:3]"  60 -1 93 62;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex55";
+	rename -uid "D46967C4-467D-1A2B-CB4D-BC8B88B71AD8";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 2.7791281 1.139416;
+	setAttr -s 4 ".d[0:3]"  58 -1 94 60;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex56";
+	rename -uid "0ADD893C-470F-7790-2805-81AD0D778A70";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.51325 2.588119 0.78422701;
+	setAttr -s 4 ".d[0:3]"  56 -1 95 58;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex57";
+	rename -uid "E7DAF690-4686-FC37-4126-A0ADC4ADDF04";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.512737 2.4861009 0.55176598;
+	setAttr -s 4 ".d[0:3]"  96 56 54 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex58";
+	rename -uid "7EC59C7A-446E-1F58-7E34-F68493F11514";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.3190531 2.3610711 0.55176598;
+	setAttr -s 4 ".d[0:3]"  97 54 52 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex59";
+	rename -uid "D7AAB8EC-4F20-F45D-AAE8-C9857B196109";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.95850998 2.1476929 0.55176598;
+	setAttr -s 4 ".d[0:3]"  98 52 49 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex60";
+	rename -uid "06874E4D-4EEF-CEC8-C989-29B118DA8A34";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.77601302 2.072005 0.55176598;
+	setAttr -s 4 ".d[0:3]"  99 49 47 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex61";
+	rename -uid "384A40B0-4923-15D7-127F-4FA317BF1A26";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.49820399 2.0033469 0.55176598;
+	setAttr -s 4 ".d[0:3]"  45 -1 100 47;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex62";
+	rename -uid "B1179599-495A-997E-ED21-6AB6165C6D91";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.40006101 1.991011 0.55176598;
+	setAttr -s 4 ".d[0:3]"  101 45 44 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex63";
+	rename -uid "59DF4647-4468-3447-B5A0-2C89AD2D57ED";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.173678 1.967921 0.55176598;
+	setAttr -s 4 ".d[0:3]"  102 44 42 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex64";
+	rename -uid "0B4E55CE-48EE-437D-BCEA-429ED6DE1D71";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.00032890201 1.958569 0.55176598;
+	setAttr -s 4 ".d[0:3]"  40 -1 103 42;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex65";
+	rename -uid "7FA56244-4B7D-94A8-0AB4-ADB87A8F3AE8";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.182889 1.9697191 0.55176598;
+	setAttr -s 4 ".d[0:3]"  104 40 38 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex66";
+	rename -uid "59D4229A-4A14-FAD9-157D-85AE753974A0";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.42960399 1.968948 0.55176598;
+	setAttr -s 4 ".d[0:3]"  105 38 34 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex67";
+	rename -uid "2343C529-4994-CFCC-1F0D-2AA9D9ADDB84";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.51419502 2.019413 0.55176598;
+	setAttr -s 4 ".d[0:3]"  106 34 30 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex68";
+	rename -uid "F3828CA7-4F3D-0E93-3CC9-84813A58823F";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.76969701 2.0885489 0.55176598;
+	setAttr -s 4 ".d[0:3]"  107 30 28 -1;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak15";
+	rename -uid "1F667BA6-40FD-7AEC-7B0A-F0B453275DF2";
+	setAttr ".uopa" yes;
+	setAttr -s 97 ".tk";
+	setAttr ".tk[107]" -type "float3" 0.01070565 -0.025471807 -5.9604645e-08 ;
+createNode polyAppendVertex -n "polyAppendVertex69";
+	rename -uid "5925E5CF-4672-264D-8C5B-9EB2926F5364";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.96722299 2.1527171 0.55176598;
+	setAttr -s 4 ".d[0:3]"  108 28 24 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex70";
+	rename -uid "6AFEF5B5-46F5-E8D6-6DE7-38A83B50EAD1";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.3255219 2.358232 0.55176598;
+	setAttr -s 4 ".d[0:3]"  18 -1 109 24;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex71";
+	rename -uid "4511A241-41C5-5DB4-367A-3990A2F08A62";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.5124481 0.55324203;
+	setAttr -s 4 ".d[0:3]"  110 18 16 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex72";
+	rename -uid "7170B337-4BC3-A433-1F1A-8BA559C3E2DA";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.597873 0.78425097;
+	setAttr -s 4 ".d[0:3]"  111 16 22 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex73";
+	rename -uid "B3832E45-471A-C702-8095-3995EC626713";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.7915521 1.11804;
+	setAttr -s 4 ".d[0:3]"  20 -1 112 22;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak16";
+	rename -uid "007BD33C-47AD-5B12-0B56-EE9EDEB95FC4";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk";
+	setAttr ".tk[16]" -type "float3" 0.001465559 0.0018939972 0.0019488931 ;
+	setAttr ".tk[22]" -type "float3" 0.00082075596 0.0071747303 -0.00067162514 ;
+createNode polyAppendVertex -n "polyAppendVertex74";
+	rename -uid "ADC0974E-41AE-863E-B541-A79325A1C141";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.842344 1.199247;
+	setAttr -s 4 ".d[0:3]"  113 20 23 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex75";
+	rename -uid "581472B2-45CB-3836-3254-76B03A1A0583";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 2.902828 1.261657;
+	setAttr -s 4 ".d[0:3]"  14 -1 114 23;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex76";
+	rename -uid "997B6D4E-4468-8296-10CF-45A67BC964AF";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 3.216481 1.547098;
+	setAttr -s 4 ".d[0:3]"  115 14 12 -1;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex77";
+	rename -uid "A6533BC6-40AD-B4AD-49F4-3694A74F7228";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 3.5676069 1.767084;
+	setAttr -s 4 ".d[0:3]"  11 -1 116 12;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex78";
+	rename -uid "08FAF126-4143-CDD1-568B-549A58760122";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 3.959502 1.898788;
+	setAttr -s 4 ".d[0:3]"  9 -1 117 11;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex79";
+	rename -uid "C87EAA4F-4AD9-F938-0218-8E9F52C56098";
+	setAttr ".uopa" yes;
+	setAttr -s 4 ".d[0:3]"  4 89 118 9;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex80";
+	rename -uid "E3B1E8D1-458B-3069-1A23-E0930F01FDC3";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.93449402 4.4105768 3.578265 
+		0.00085456303 4.4117599 3.578265;
+	setAttr -s 4 ".d[0:3]"  88 -1 -1 87;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex81";
+	rename -uid "B482A4E9-4C24-7FB1-7C87-7F8F9F9BC1C3";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.385419 4.4177608 3.5758669;
+	setAttr -s 4 ".d[0:3]"  88 83 -1 119;
+	setAttr ".tx" 2;
+createNode polyExtrudeEdge -n "polyExtrudeEdge2";
+	rename -uid "81C14C77-46C6-B36A-BE65-60A765D3F6BA";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[200]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.420436 4.4177608 2.8088799 ;
+	setAttr ".rs" 48244;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.4554530382156372 4.4177608489990234 2.0418930053710938 ;
+	setAttr ".cbx" -type "double3" -1.3854190111160278 4.4177608489990234 3.5758669376373291 ;
+createNode polyMergeVert -n "polyMergeVert2";
+	rename -uid "18D126F4-480C-DF8F-8C43-3C9B04B1840F";
+	setAttr ".ics" -type "componentList" 2 "vtx[82]" "vtx[122]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak17";
+	rename -uid "245AA737-4F9D-BB88-F389-97ABA3CE5BC9";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[122:123]" -type "float3"  -0.057796955 -0.003921032
+		 -0.015810013 -0.090749145 -0.057413578 0.0023982525;
+createNode polyAppendVertex -n "polyAppendVertex82";
+	rename -uid "D7FB71E8-4AB3-2F60-E37E-90B7EFBA0155";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  0.826989 4.414659 3.578265;
+	setAttr -s 4 ".d[0:3]"  87 120 -1 86;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak18";
+	rename -uid "7CFD0D64-4803-FE63-8E80-D387571D57D1";
+	setAttr ".uopa" yes;
+	setAttr ".tk[122]" -type "float3"  -0.03708148 0.050318718 -0.0022523403;
+createNode polyAppendVertex -n "polyAppendVertex83";
+	rename -uid "AB0D78D8-42E7-3857-F2F8-AC807034C25B";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.51325 4.4114852 3.565336;
+	setAttr -s 4 ".d[0:3]"  123 -1 84 86;
+	setAttr ".tx" 2;
+createNode polyExtrudeEdge -n "polyExtrudeEdge3";
+	rename -uid "8384F486-4D2C-ACC7-7CAB-928900A7D586";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[207]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.4440635 4.4177608 2.8003452 ;
+	setAttr ".rs" 35053;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 1.4329761266708374 4.4177608489990234 2.0331590175628662 ;
+	setAttr ".cbx" -type "double3" 1.4551509618759155 4.4177608489990234 3.5675313472747803 ;
+createNode polyTweak -n "polyTweak19";
+	rename -uid "70B27793-4E3B-779E-0E6B-C0AE24C61A66";
+	setAttr ".uopa" yes;
+	setAttr ".tk[124]" -type "float3"  -0.080273867 0.0062756538 0.0021953583;
+createNode polyMergeVert -n "polyMergeVert3";
+	rename -uid "9E7200E1-4039-6E51-8425-908755C707FE";
+	setAttr ".ics" -type "componentList" 2 "vtx[85]" "vtx[126]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak20";
+	rename -uid "5E59D3C4-44C0-4C6A-00C3-F19CD2AEE659";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[125:126]" -type "float3"  0.068430781 -4.7683716e-07
+		 -0.039786577 0.058099031 -0.0054016113 -0.037461996;
+createNode polyExtrudeEdge -n "polyExtrudeEdge4";
+	rename -uid "B24249B4-4C81-E2E3-D4ED-6AADB7AE0F46";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[203]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 4.4122529 2.8010478 ;
+	setAttr ".rs" 43838;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 4.4106659889221191 2.0260829925537109 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 4.4138398170471191 3.5760128498077393 ;
+createNode polyTweak -n "polyTweak21";
+	rename -uid "02090990-437A-1666-5FF8-CCB95DE9C31F";
+	setAttr ".uopa" yes;
+	setAttr -s 3 ".tk[123:125]" -type "float3"  -8.5234642e-05 -0.0032896996
+		 2.3841858e-07 -0.0073930025 -0.012350559 0.010733843 0.011842728 4.7683716e-07 0.049569368;
+createNode polyMergeVert -n "polyMergeVert4";
+	rename -uid "B220AAF1-4044-9DCF-868F-F69B08CEC0EC";
+	setAttr ".ics" -type "componentList" 2 "vtx[90]" "vtx[126]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak22";
+	rename -uid "F7E005E0-4296-E34A-E356-F0831141C477";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[126:127]" -type "float3"  0 -0.05979681 -0.10343897
+		 0 -0.075030804 -0.1042769;
+createNode polyExtrudeEdge -n "polyExtrudeEdge5";
+	rename -uid "E4DC6B54-4B04-036C-DD9B-D9B2B9651199";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[211]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 4.3388653 2.7490127 ;
+	setAttr ".rs" 42641;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 4.3236875534057617 1.9226440191268921 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 4.3540430068969727 3.5753812789916992 ;
+createNode polyTweak -n "polyTweak23";
+	rename -uid "86EE5B6B-4DD7-CEBC-4D0D-E28CC73B0CFA";
+	setAttr ".uopa" yes;
+	setAttr ".tk[126]" -type "float3"  0 -0.011947632 0.10364532;
+createNode polyMergeVert -n "polyMergeVert5";
+	rename -uid "61241ECA-4856-E64A-C0FD-888C7619503C";
+	setAttr ".ics" -type "componentList" 2 "vtx[91]" "vtx[127]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak24";
+	rename -uid "0010B6F0-4523-5410-C8F8-FBA518905653";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[127:128]" -type "float3"  0 -0.38657689 -0.03342402
+		 0 -0.36583757 0.0028839111;
+createNode polyExtrudeEdge -n "polyExtrudeEdge6";
+	rename -uid "2A3A66A7-49CE-DC44-47D9-1CB64BF9E9F2";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[213]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 3.9626579 2.7337427 ;
+	setAttr ".rs" 46892;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 3.9578499794006348 1.8892199993133545 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 3.9674661159515381 3.5782651901245117 ;
+createNode polyMergeVert -n "polyMergeVert6";
+	rename -uid "76983356-45E7-08A9-ABDF-80A5312D76E5";
+	setAttr ".ics" -type "componentList" 2 "vtx[92]" "vtx[128]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak25";
+	rename -uid "9DC573CC-49C9-A137-C7BD-B397B26AD74C";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[128:129]" -type "float3"  0 -0.37178206 -0.12412202
+		 0 -0.3832593 -0.10804987;
+createNode polyExtrudeEdge -n "polyExtrudeEdge7";
+	rename -uid "C28AF5FD-4A60-EE89-8729-3F9F9729983D";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[215]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5120668 3.5889344 2.6716816 ;
+	setAttr ".rs" 58627;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 3.5821850299835205 1.765097975730896 ;
+	setAttr ".cbx" -type "double3" -1.5108836889266968 3.5956840515136719 3.5782651901245117 ;
+createNode polyTweak -n "polyTweak26";
+	rename -uid "F79D4A55-4111-87C0-2DE3-86BC02BEA2E9";
+	setAttr ".uopa" yes;
+	setAttr ".tk[128]" -type "float3"  0.0023659468 0.007594347 0.10804987;
+createNode polyMergeVert -n "polyMergeVert7";
+	rename -uid "A01CF362-444D-AB2B-86B6-2F9EDCE8585D";
+	setAttr ".ics" -type "componentList" 2 "vtx[93]" "vtx[129]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak27";
+	rename -uid "703C9CF2-4A2A-A006-1E33-0DA2456FA21A";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[129:130]" -type "float3"  0 -0.36988807 -0.21210492
+		 -0.0023659468 -0.39639187 -0.19009018;
+createNode polyExtrudeEdge -n "polyExtrudeEdge8";
+	rename -uid "A4FB63FA-48B4-92C2-3023-3D8C4C698148";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[217]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 3.2057946 2.4705839 ;
+	setAttr ".rs" 61570;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 3.1857931613922119 1.5529930591583252 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 3.2257959842681885 3.3881750106811523 ;
+createNode polyMergeVert -n "polyMergeVert8";
+	rename -uid "6C3A0327-46B0-ACCD-EA41-7E987CF0C178";
+	setAttr ".ics" -type "componentList" 2 "vtx[94]" "vtx[130]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak28";
+	rename -uid "E8FC3779-4775-43EF-BBE8-48AA7FD2BE71";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[130:131]" -type "float3"  0 -0.31799889 -0.26862502
+		 0 -0.34203601 -0.25403261;
+createNode polyExtrudeEdge -n "polyExtrudeEdge9";
+	rename -uid "1B3302AB-4E2E-86B8-4103-3281088E1F15";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[219]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 2.8757772 2.2092552 ;
+	setAttr ".rs" 62951;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 2.843757152557373 1.2843680381774902 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 2.90779709815979 3.1341423988342285 ;
+createNode polyMergeVert -n "polyMergeVert9";
+	rename -uid "0932930D-456D-0228-C403-83805D874F14";
+	setAttr ".ics" -type "componentList" 2 "vtx[95]" "vtx[131]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak29";
+	rename -uid "B3ED0EAE-4355-887F-9A34-91911573E9D2";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[131:132]" -type "float3"  0 -0.12866902 -0.14495206
+		 -1.1920929e-07 -0.13257146 -0.12947512;
+createNode polyExtrudeEdge -n "polyExtrudeEdge10";
+	rename -uid "65408A50-4BA4-A9E7-034B-2DA7C7694BE2";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[221]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 2.7451568 2.0720415 ;
+	setAttr ".rs" 38394;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 2.7111856937408447 1.139415979385376 ;
+	setAttr ".cbx" -type "double3" -1.5132497549057007 2.7791280746459961 3.0046672821044922 ;
+createNode polyMergeVert -n "polyMergeVert10";
+	rename -uid "4C7E6D82-467A-221D-7675-E9B8DBE151DB";
+	setAttr ".ics" -type "componentList" 2 "vtx[96]" "vtx[132]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak30";
+	rename -uid "BADCD5CB-4055-FAC3-2FB9-6080A9CE8516";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[132:133]" -type "float3"  0 -0.19100904 -0.35518897
+		 1.1920929e-07 -0.21031427 -0.3585465;
+createNode polyExtrudeEdge -n "polyExtrudeEdge11";
+	rename -uid "436BCD54-4B87-C5FE-34E9-69BE39475732";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[223]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132499 2.5444951 1.715174 ;
+	setAttr ".rs" 40186;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132499933242798 2.5008714199066162 0.78422701358795166 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 2.5881190299987793 2.6461207866668701 ;
+createNode polyExtrudeEdge -n "polyExtrudeEdge12";
+	rename -uid "CD7F5B6B-4CDE-B41C-3485-3B86A0FD3018";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 13 "e[198]" "e[201:202]" "e[204]" "e[206]" "e[208]" "e[210]" "e[212]" "e[214]" "e[216]" "e[218]" "e[220]" "e[222]" "e[225]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -5.9604645e-08 3.4070985 2.9909966 ;
+	setAttr ".rs" 56787;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132497549057007 2.3964362144470215 2.4037280082702637 ;
+	setAttr ".cbx" -type "double3" 1.5132496356964111 4.4177608489990234 3.5782651901245117 ;
+createNode polyTweak -n "polyTweak31";
+	rename -uid "0FA858E7-4FE6-99A2-5E0C-B69C42152DD6";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[133:134]" -type "float3"  3.5762787e-07 -0.10443497
+		 -0.23246109 0 -0.10443521 -0.24239278;
+createNode polyExtrudeEdge -n "polyExtrudeEdge13";
+	rename -uid "F30D2251-4548-C81C-B614-A48E9C78A6B9";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 2 "e[226]" "e[254]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132496 2.2874601 2.0624263 ;
+	setAttr ".rs" 53880;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132496356964111 2.0912361145019531 0.55176591873168945 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 2.4836840629577637 3.5730867385864258 ;
+createNode polyTweak -n "polyTweak32";
+	rename -uid "78B7FA1C-4F98-EAD2-B0F9-58BDAFFB4EDB";
+	setAttr ".uopa" yes;
+	setAttr -s 150 ".tk[126:149]" -type "float3"  0 -0.048918247 -0.12396502
+		 0 0.012905598 -0.099046946 -0.0023659468 -0.0054244995 -0.13099861 0 0 0 0 0 0 0
+		 0 0 0 0 0 0 0 0 0 0 0 0 -0.24084568 2.3841858e-07 -3.608875e-08 -0.24084616 2.3841858e-07
+		 -1.1920929e-07 -0.24084568 0.0023982525 0 -0.24084616 0.0022523403 1.1920929e-07
+		 -0.24084568 0 0 -0.24084616 0 0 -0.24084568 0.00095105171 0 -0.24084568 0.0028839111
+		 0 -0.24084616 0 0 -0.24084592 0 0 -0.24084592 0.19009018 0 -0.24084592 0.44412279
+		 1.1920929e-07 -0.24084592 0.57042599 0 -0.30067873 0.9321444 0 -0.3052001 1.16935873;
+createNode polyExtrudeEdge -n "polyExtrudeEdge14";
+	rename -uid "14A45C19-4691-0164-BE83-2DA8D5EDEA2C";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[154]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.415895 2.4235859 0.55176598 ;
+	setAttr ".rs" 39346;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5127370357513428 2.3610711097717285 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" -1.319053053855896 2.4861009120941162 0.55176597833633423 ;
+createNode polyTweak -n "polyTweak33";
+	rename -uid "2648338D-4834-A346-7489-F09BC57AC7B6";
+	setAttr ".uopa" yes;
+	setAttr -s 153 ".tk[150:152]" -type "float3"  0 -1.090314627 0.0050675273
+		 0 -1.0051743984 0.015365124 0 -0.6999743 0.0051784515;
+createNode polyMergeVert -n "polyMergeVert11";
+	rename -uid "8DC21C2F-4F84-7D1C-9C2E-CEBEE9EE79BF";
+	setAttr ".ics" -type "componentList" 2 "vtx[150]" "vtx[154]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak34";
+	rename -uid "FEB5DEF2-4B9B-49D6-59F9-4099A6C451C3";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[153:154]" -type "float3"  0.026071429 -0.96980929 0.12064064
+		 -0.00051259995 -1.092731476 0.0050674677;
+createNode polyExtrudeEdge -n "polyExtrudeEdge15";
+	rename -uid "9B76E1D9-460B-1C13-4C91-E9991D1ECBB2";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[180]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.4193859 2.4353399 0.552504 ;
+	setAttr ".rs" 57905;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 1.3255219459533691 2.3582320213317871 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" 1.5132499933242798 2.5124480724334717 0.553242027759552 ;
+createNode polyTweak -n "polyTweak35";
+	rename -uid "7E622FF0-43DC-B32A-4845-35AE4EFCEA51";
+	setAttr ".uopa" yes;
+	setAttr ".tk[153]" -type "float3"  -0.0026345253 0 -0.10284543;
+createNode polyExtrudeEdge -n "polyExtrudeEdge16";
+	rename -uid "C282C1DF-4B18-8C49-0254-D0A0419CB52C";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[179]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.1463724 2.2554746 0.55176598 ;
+	setAttr ".rs" 33374;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 0.96722298860549927 2.152717113494873 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" 1.3255219459533691 2.3582320213317871 0.55176597833633423 ;
+createNode polyTweak -n "polyTweak36";
+	rename -uid "7587A5D7-4114-5E07-963E-7CACBC9F1838";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[154:155]" -type "float3"  -0.0034948587 -1.11659896
+		 -0.001476109 0.0049645901 -0.96697021 -5.9604645e-08;
+createNode polyMergeVert -n "polyMergeVert12";
+	rename -uid "A6A9FB87-4945-4236-51AC-8D8CE73DEC66";
+	setAttr ".ics" -type "componentList" 1 "vtx[155:156]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak37";
+	rename -uid "1935F459-4634-8610-60D1-9EA7B39C4334";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[156:157]" -type "float3"  0.0049645901 -0.96697021 -5.9604645e-08
+		 -0.021046162 -0.7614553 0.150316;
+createNode polyExtrudeEdge -n "polyExtrudeEdge17";
+	rename -uid "E2F13C86-4DE6-282D-1721-DDA6ADAC97D4";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[176]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 0.86846 2.1206331 0.55176598 ;
+	setAttr ".rs" 65369;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 0.76969701051712036 2.0885488986968994 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" 0.96722298860549927 2.152717113494873 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert13";
+	rename -uid "2B752B4D-4A1E-F952-BB25-E5B151C0135B";
+	setAttr ".ics" -type "componentList" 1 "vtx[156:157]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak38";
+	rename -uid "EC2DB809-4BAA-A073-3ED4-29953A1D308E";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[157:158]" -type "float3"  -0.021046162 -0.7614553 0.150316
+		 -0.0064170957 -0.69728708 0.075684547;
+createNode polyExtrudeEdge -n "polyExtrudeEdge18";
+	rename -uid "79FEDF05-4E40-C318-1FBD-F4A259BA59E1";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[174]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 0.64729881 2.041245 0.55176592 ;
+	setAttr ".rs" 58613;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 0.52490067481994629 1.9939411878585815 0.55176591873168945 ;
+	setAttr ".cbx" -type "double3" 0.76969701051712036 2.0885488986968994 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert14";
+	rename -uid "DE608519-4EE4-F287-2FD1-D7BB85A5E15E";
+	setAttr ".ics" -type "componentList" 1 "vtx[157:158]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak39";
+	rename -uid "CF121780-4832-CCAD-4C52-A882E698C20D";
+	setAttr ".uopa" yes;
+	setAttr -s 169 ".tk[158:168]" -type "float3"  -0.0064170957 -0.69728708
+		 0.075684547 -0.0096166134 -0.60267937 0.088213801 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+		 0 0 0 0 0 0 0 0 0 0 0;
+createNode polyExtrudeEdge -n "polyExtrudeEdge19";
+	rename -uid "15D92E8B-4BE0-2E2B-3FEB-3BBF3842BDAC";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[172]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 0.47725233 1.9814446 0.55176592 ;
+	setAttr ".rs" 52986;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 0.42960399389266968 1.9689480066299438 0.55176591873168945 ;
+	setAttr ".cbx" -type "double3" 0.52490067481994629 1.9939411878585815 0.55176597833633423 ;
+createNode polyTweak -n "polyTweak40";
+	rename -uid "6399925C-40D6-EAFA-A7CA-B79F269086B0";
+	setAttr ".uopa" yes;
+	setAttr -s 3 ".tk[156:158]" -type "float3"  0.0077063441 0 -0.15031606
+		 0.0074757338 0.0012613535 -0.075684607 0.0085765123 0 -0.088213801;
+createNode polyMergeVert -n "polyMergeVert15";
+	rename -uid "DE3B50E2-4869-0F58-808C-97B15695C7BA";
+	setAttr ".ics" -type "componentList" 1 "vtx[158:159]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak41";
+	rename -uid "C54F9638-42A5-8CA6-D2FB-9383435C8B8D";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[159:160]" -type "float3"  -0.0010401011 -0.60267937
+		 0 -0.00034013391 -0.57750058 -5.9604645e-08;
+createNode polyExtrudeEdge -n "polyExtrudeEdge20";
+	rename -uid "D9053906-4B87-8A77-FFC6-7B8F589A4FCD";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[170]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 0.30624649 1.9693335 0.55176598 ;
+	setAttr ".rs" 59516;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 0.18288899958133698 1.9689480066299438 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" 0.42960399389266968 1.9697190523147583 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert16";
+	rename -uid "14FF0E4A-4576-D264-D3AE-D89582AE0E00";
+	setAttr ".ics" -type "componentList" 1 "vtx[159:160]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak42";
+	rename -uid "F1838851-4104-7CC9-CCE4-67949A85E8D0";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[160:161]" -type "float3"  -0.00034013391 -0.57750058
+		 -5.9604645e-08 -0.005519703 -0.57845724 0.008292973;
+createNode polyExtrudeEdge -n "polyExtrudeEdge21";
+	rename -uid "A9692E14-4DA9-7474-F4F8-9FBBB4D7BDCA";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[168]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 0.091608949 1.964144 0.55176598 ;
+	setAttr ".rs" 52313;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 0.00032890200964175165 1.9585690498352051 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" 0.18288899958133698 1.9697190523147583 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert17";
+	rename -uid "58E87FA1-46FF-253C-E8AB-F19C01285456";
+	setAttr ".ics" -type "componentList" 1 "vtx[160:161]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak43";
+	rename -uid "9D195D5C-42CF-C112-F82B-41BD8BCEC8F9";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[161:162]" -type "float3"  -0.005519703 -0.57845724 0.008292973
+		 0.00097908615 -0.56582391 -5.9604645e-08;
+createNode polyExtrudeEdge -n "polyExtrudeEdge22";
+	rename -uid "A7AE19BA-446F-FBD4-66A3-54AC31E6DA85";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[167]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -0.086674549 1.963245 0.55176598 ;
+	setAttr ".rs" 58028;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -0.17367799580097198 1.9585690498352051 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" 0.00032890200964175165 1.9679210186004639 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert18";
+	rename -uid "C685A901-42C6-B8AB-3731-B89FE6301436";
+	setAttr ".ics" -type "componentList" 1 "vtx[161:162]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak44";
+	rename -uid "6BE5B925-402A-7D13-63FF-BEB70062A9F5";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[162:163]" -type "float3"  0.00097908615 -0.56582391
+		 -5.9604645e-08 -0.0086371452 -0.5766592 0.015617311;
+createNode polyExtrudeEdge -n "polyExtrudeEdge23";
+	rename -uid "4B517171-4772-67C1-427E-D1AB3CE1CB27";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[164]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -0.2868695 1.979466 0.55176598 ;
+	setAttr ".rs" 55769;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -0.40006101131439209 1.9679210186004639 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" -0.17367799580097198 1.9910110235214233 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert19";
+	rename -uid "92BA86BC-4CB1-AD16-BA41-A78253FAA4AD";
+	setAttr ".ics" -type "componentList" 1 "vtx[162:163]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak45";
+	rename -uid "9F49DBBC-4F5F-BD9A-BFD9-ED9EAE0D2A63";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[163:164]" -type "float3"  -0.0086371452 -0.5766592 0.015617311
+		 -0.018455237 -0.59974921 0.028800905;
+createNode polyExtrudeEdge -n "polyExtrudeEdge24";
+	rename -uid "C9F58867-4B78-9141-2B55-5F8D338E4E63";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[162]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -0.4491325 1.997179 0.55176598 ;
+	setAttr ".rs" 57860;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -0.49820399284362793 1.9910110235214233 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" -0.40006101131439209 2.0033469200134277 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert20";
+	rename -uid "11CAE2B0-4750-A7E9-9CBA-2986D217413F";
+	setAttr ".ics" -type "componentList" 1 "vtx[163:164]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak46";
+	rename -uid "88C97FAF-465D-3907-55E8-12BC9A4563CB";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[164:165]" -type "float3"  -0.018455237 -0.59974921 0.028800905
+		 -0.025265753 -0.6120851 0.023592353;
+createNode polyExtrudeEdge -n "polyExtrudeEdge25";
+	rename -uid "CF83F61B-4011-CC43-6867-37BA0BDEEFDD";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[161]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -0.6371085 2.0376759 0.55176598 ;
+	setAttr ".rs" 55301;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -0.77601301670074463 2.0033469200134277 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" -0.49820399284362793 2.072005033493042 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert21";
+	rename -uid "6A18B6B6-4936-C39C-296A-859692C43940";
+	setAttr ".ics" -type "componentList" 1 "vtx[164:165]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak47";
+	rename -uid "AAC6C961-4EAB-B186-96A3-D2988161AC0A";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[165:166]" -type "float3"  -0.025265753 -0.6120851 0.023592353
+		 -0.033285022 -0.68074322 0.057367146;
+createNode polyExtrudeEdge -n "polyExtrudeEdge26";
+	rename -uid "9F5C8C57-4ABF-76EB-B564-ADB2B5498115";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[158]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -0.86726153 2.109849 0.55176598 ;
+	setAttr ".rs" 57424;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -0.95850998163223267 2.072005033493042 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" -0.77601301670074463 2.1476929187774658 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert22";
+	rename -uid "157781F0-4613-6AF4-E889-008AB46321E4";
+	setAttr ".ics" -type "componentList" 1 "vtx[165:166]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak48";
+	rename -uid "58336B7D-45D0-5E92-1489-D399680B5ED2";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[166:167]" -type "float3"  -0.033285022 -0.68074322 0.057367146
+		 -0.024421811 -0.7564311 0.058135331;
+createNode polyExtrudeEdge -n "polyExtrudeEdge27";
+	rename -uid "C4BEA978-4ABF-8747-E3D3-1BA51DB288B7";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[156]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.1387815 2.2543821 0.55176598 ;
+	setAttr ".rs" 57157;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.319053053855896 2.1476929187774658 0.55176597833633423 ;
+	setAttr ".cbx" -type "double3" -0.95850998163223267 2.3610711097717285 0.55176597833633423 ;
+createNode polyMergeVert -n "polyMergeVert23";
+	rename -uid "9A7EB002-4E7D-B1A5-9447-58BF43CBF387";
+	setAttr ".ics" -type "componentList" 1 "vtx[166:167]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak49";
+	rename -uid "659D7C51-4FBA-1226-4744-54AC63163613";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[167:168]" -type "float3"  -0.024421811 -0.7564311 0.058135331
+		 -0.017514229 -0.83870649 -5.9604645e-08;
+createNode polyMergeVert -n "polyMergeVert24";
+	rename -uid "A52A2820-47CF-69DD-8617-97B7CE4F2E25";
+	setAttr ".ics" -type "componentList" 2 "vtx[153]" "vtx[167]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak50";
+	rename -uid "7ED6AD95-4D07-B8F4-B650-02AE5370A60E";
+	setAttr ".uopa" yes;
+	setAttr -s 3 ".tk";
+	setAttr ".tk[98]" -type "float3" -0.008073926 -0.064601183 -5.9604645e-08 ;
+	setAttr ".tk[153]" -type "float3" -0.008073926 0 5.9604645e-08 ;
+	setAttr ".tk[167]" -type "float3" 0.032877207 -0.1311028 0.017795324 ;
+createNode polyExtrudeEdge -n "polyExtrudeEdge28";
+	rename -uid "2EB3A525-486D-9E7E-789E-278C7DFF30AD";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 6 "e[137]" "e[182]" "e[185:186]" "e[189:190]" "e[193]" "e[195:196]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.51325 3.4624038 1.2744695 ;
+	setAttr ".rs" 59361;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 1.5132499933242798 2.5124480724334717 0.553242027759552 ;
+	setAttr ".cbx" -type "double3" 1.5132499933242798 4.4123592376708984 1.995697021484375 ;
+createNode polyTweak -n "polyTweak51";
+	rename -uid "9671CDC5-4C27-9E02-6EF5-4C8B14997F05";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[165:166]" -type "float3"  -0.004508853 0 -0.049882054
+		 -0.0069292784 0 -0.050238311;
+createNode polyMergeVert -n "polyMergeVert25";
+	rename -uid "E7B5BAD9-4D5A-B921-6D38-83AE5FCD54D0";
+	setAttr ".ics" -type "componentList" 2 "vtx[154]" "vtx[170]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak52";
+	rename -uid "B52B1298-4AD7-1B24-01AE-90B3A3EEB1F5";
+	setAttr ".uopa" yes;
+	setAttr -s 177 ".tk[167:176]" -type "float3"  -0.0055259466 -3.021097422
+		 0.027690172 -0.0040849447 -2.95733619 -0.0055422783 -0.0081357956 -1.20661116 0.020584702
+		 -0.0034948587 -1.11659896 -0.001476109 -0.013081193 -1.40029025 0.016340256 -0.0034039021
+		 -1.45108223 0.02068913 -0.0069286823 -1.51156616 0.02621305 -0.0042409897 -1.82521915
+		 -0.014167666 -3.5762787e-07 -2.17566633 0.021902561 -0.0015156269 -2.56824017 0.0042592287;
+createNode polyExtrudeEdge -n "polyExtrudeEdge29";
+	rename -uid "D2D48523-48E0-DA19-1B45-219635ADE745";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[290]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.5104871 2.9018106 2.009542 ;
+	setAttr ".rs" 36397;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 1.5077240467071533 1.3912618160247803 1.995697021484375 ;
+	setAttr ".cbx" -type "double3" 1.5132499933242798 4.4123592376708984 2.0233871936798096 ;
+createNode polyTweak -n "polyTweak53";
+	rename -uid "76C4CD19-4C7A-6668-2B54-AFA9E7CD5550";
+	setAttr ".uopa" yes;
+	setAttr ".tk[154]" -type "float3"  -0.0002464056 -0.0037909746 5.9604645e-08;
+createNode polyMergeVert -n "polyMergeVert26";
+	rename -uid "2F1B1919-48D0-B648-E173-C38AB53F0277";
+	setAttr ".ics" -type "componentList" 2 "vtx[125]" "vtx[176]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak54";
+	rename -uid "2957594C-4B41-F0C3-4A7E-DA89A595B7FC";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[176:177]" -type "float3"  -3.5762787e-07 0.0054016113
+		 1.58161712 -2.3841858e-07 0.12930286 1.554878;
+createNode polyAppendVertex -n "polyAppendVertex84";
+	rename -uid "41A9D95E-40C3-93EE-FC57-828E92C5863F";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".v[0:1]" -type "float3"  -0.089221202 1.3912621 3.573482 
+		0.84497499 1.3912621 3.5758941;
+	setAttr -s 4 ".d[0:3]"  -1 -1 139 136;
+	setAttr ".tx" 2;
+createNode polyTweak -n "polyTweak55";
+	rename -uid "A66859D3-435B-705B-B286-7EAE97FBD403";
+	setAttr ".uopa" yes;
+	setAttr ".tk[176]" -type "float3"  -0.0059006214 -0.12930286 -0.001393795;
+createNode polyAppendVertex -n "polyAppendVertex85";
+	rename -uid "F352E228-4A94-A668-F4B7-7EAD524D80DA";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -0.93540299 1.3912621 3.5636771;
+	setAttr -s 4 ".d[0:3]"  136 135 -1 177;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex86";
+	rename -uid "04E590B9-4101-18A1-DB7D-EB991A63E75E";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  -1.34884 1.3912621 3.5648639;
+	setAttr -s 4 ".d[0:3]"  -1 179 135 137;
+	setAttr ".tx" 2;
+createNode polyAppendVertex -n "polyAppendVertex87";
+	rename -uid "1A31D100-43ED-D332-E9B0-BA83A3784B44";
+	setAttr ".uopa" yes;
+	setAttr ".v[0]" -type "float3"  1.388823 1.392301 3.578265;
+	setAttr -s 4 ".d[0:3]"  178 -1 140 139;
+	setAttr ".tx" 2;
+createNode polyExtrudeEdge -n "polyExtrudeEdge30";
+	rename -uid "B3106A38-4E29-DAE1-061A-6F83BB99A4FA";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[239]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 1.4694164 4.1707397 3.5782652 ;
+	setAttr ".rs" 35717;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" 1.4255831241607666 4.1645641326904297 3.5782651901245117 ;
+	setAttr ".cbx" -type "double3" 1.5132496356964111 4.176915168762207 3.5782651901245117 ;
+createNode polyMergeVert -n "polyMergeVert27";
+	rename -uid "CFABD471-4F75-DAEB-6B8C-A99A65E9C02E";
+	setAttr ".ics" -type "componentList" 1 "vtx[181:182]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak56";
+	rename -uid "CF61DE9D-455E-9A1F-0E7B-139C8D33658D";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[182:183]" -type "float3"  -0.036760092 -2.77226305 -2.3841858e-07
+		 -0.01218164 -2.77654219 0;
+createNode polyMergeVert -n "polyMergeVert28";
+	rename -uid "B8B4238B-4A08-F60C-E09D-3991C08CFAC5";
+	setAttr ".ics" -type "componentList" 2 "vtx[176]" "vtx[182]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak57";
+	rename -uid "24928CAD-4046-03AE-731C-E38D5ED3EC0C";
+	setAttr ".uopa" yes;
+	setAttr ".tk[182]" -type "float3"  0.00075519085 -0.009111166 -0.001393795;
+createNode polyExtrudeEdge -n "polyExtrudeEdge31";
+	rename -uid "43650F4F-452B-A61A-342B-D7B0C73029A0";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 1 "e[233]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.4493344 4.1733675 3.5782652 ;
+	setAttr ".rs" 33516;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132496356964111 4.1698198318481445 3.5782651901245117 ;
+	setAttr ".cbx" -type "double3" -1.3854191303253174 4.176915168762207 3.5782651901245117 ;
+createNode polyMergeVert -n "polyMergeVert29";
+	rename -uid "64FBC8B5-493E-2A25-8ED2-C383EC9A225D";
+	setAttr ".ics" -type "componentList" 2 "vtx[152]" "vtx[183]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak58";
+	rename -uid "F5555E14-466C-46F9-9DE1-41B180F418BB";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk[182:183]" -type "float3"  0.037778497 -2.77640319 0
+		 0 -2.77855802 0;
+createNode polyMergeVert -n "polyMergeVert30";
+	rename -uid "81A668AD-4DC0-ED2F-EBAB-CD95FB909FFD";
+	setAttr ".ics" -type "componentList" 2 "vtx[180]" "vtx[182]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak59";
+	rename -uid "AD1CD594-4BE9-455B-A539-A5989ABC3AFD";
+	setAttr ".uopa" yes;
+	setAttr -s 2 ".tk";
+	setAttr ".tk[180]" -type "float3" -0.0005825758 0.0012301207 0.01340127 ;
+	setAttr ".tk[182]" -type "float3" -0.0017819405 -0.008019805 0 ;
+createNode polyMergeVert -n "polyMergeVert31";
+	rename -uid "4F5BA419-44B8-B2A9-7DFD-4CBAD17DE082";
+	setAttr ".ics" -type "componentList" 2 "vtx[138]" "vtx[142]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak60";
+	rename -uid "7269A4A4-468D-D9A2-AB93-18A14B54C64A";
+	setAttr ".uopa" yes;
+	setAttr ".tk[142]" -type "float3"  0 0.086977959 0;
+createNode polyExtrudeEdge -n "polyExtrudeEdge32";
+	rename -uid "8B152720-4BDA-FC4F-C574-51B143FBFAD6";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 21 "e[262]" "e[265]" "e[267]" "e[269]" "e[271]" "e[273]" "e[275]" "e[277]" "e[279]" "e[281]" "e[283]" "e[285]" "e[287:288]" "e[291]" "e[293]" "e[295]" "e[297]" "e[299]" "e[301]" "e[303]" "e[305:307]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" 0 1.3923156 2.0643187 ;
+	setAttr ".rs" 57417;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132496356964111 1.3912618160247803 0.55176591873168945 ;
+	setAttr ".cbx" -type "double3" 1.5132496356964111 1.3933694362640381 3.576871395111084 ;
+createNode polyExtrudeEdge -n "polyExtrudeEdge33";
+	rename -uid "1043FF70-4C1A-AAAD-9B2C-C58BF8E7C938";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 2 "e[257]" "e[259]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -1.5132496 1.3923156 2.0675492 ;
+	setAttr ".rs" 38250;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.5132496356964111 1.3912618160247803 0.55683344602584839 ;
+	setAttr ".cbx" -type "double3" -1.5132496356964111 1.3933694362640381 3.5782651901245117 ;
+createNode polyTweak -n "polyTweak61";
+	rename -uid "D9F4D4D6-4702-A6D9-9C73-E7A1CF5A5CB3";
+	setAttr ".uopa" yes;
+	setAttr -s 206 ".tk[181:205]" -type "float3"  -0.20955956 0 0.0021199584
+		 0 0 0.002120018 -1.50097668 -0.00079631805 0.002120018 -1.50097668 0 0.0021199584
+		 -1.5009768 0 0.0021200776 -1.5009768 -0.0012613535 0.0021200776 -1.5009768 0 0.0021199584
+		 -1.50097668 -0.00018560886 0.002120018 -1.50097668 0 0.0021199584 -1.50097668 -0.0014833212
+		 0.0021199584 -1.33093452 0 0.002120018 -1.094733357 0 0.0021200776 -0.98977983 0
+		 0.0021199584 -0.69944274 0 0.0021200776 -0.52338862 0 0.0021199584 -1.50097656 0
+		 0.002120018 -1.5009768 0 0.002120018 -1.50097668 0 0.0021199584 -1.50097668 0 0.0021202564
+		 -1.50097668 0 0.0021201372 -1.50097656 0 0.002120018 -1.50097668 0 0.002120018 -1.5009768
+		 -0.00067877769 0.002120018 -1.50097656 0 0.0021201372 -1.5009768 0 0.001393795;
+createNode polyMergeVert -n "polyMergeVert32";
+	rename -uid "F535436B-4741-AC6D-D599-22B9303B8E65";
+	setAttr ".ics" -type "componentList" 2 "vtx[205]" "vtx[208]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak62";
+	rename -uid "42AC4FF6-4C97-BDC8-49AC-7EBB68376847";
+	setAttr ".uopa" yes;
+	setAttr -s 209 ".tk[206:208]" -type "float3"  1.52786076 -0.0010774136 -0.0050675273
+		 1.527861 0 -0.020636082 1.51409602 0 0;
+createNode polyMergeVert -n "polyMergeVert33";
+	rename -uid "575A85EC-4E5B-B08E-E485-7195F5A9F60A";
+	setAttr ".ics" -type "componentList" 2 "vtx[183]" "vtx[206]";
+	setAttr ".ix" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
+	setAttr ".d" 0.001;
+createNode polyTweak -n "polyTweak63";
+	rename -uid "FC20A8F3-422D-F695-60BC-2B83278ACB68";
+	setAttr ".uopa" yes;
+	setAttr -s 208 ".tk[149:207]" -type "float3"  0 0 -0.0050675273 0 0 -0.0067780018
+		 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+		 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+		 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+		 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+		 0 -0.0060790777 -0.0010302067 0.0021200776 -0.0026276428 0 -0.0067780018;
+select -ne :time1;
+	setAttr ".o" 1;
+	setAttr ".unw" 1;
+select -ne :hardwareRenderingGlobals;
+	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
+	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
+		 1 1 1 0 0 0 0 0 0 0 0 0
+		 0 0 0 0 ;
+	setAttr ".dli" 1;
+	setAttr ".fprt" yes;
+	setAttr ".rtfm" 1;
+select -ne :renderPartition;
+	setAttr -s 2 ".st";
+select -ne :renderGlobalsList1;
+select -ne :defaultShaderList1;
+	setAttr -s 5 ".s";
+select -ne :postProcessList1;
+	setAttr -s 2 ".p";
+select -ne :defaultRenderingList1;
+select -ne :standardSurface1;
+	setAttr ".b" 0.80000001192092896;
+	setAttr ".bc" -type "float3" 1 1 1 ;
+	setAttr ".s" 0.20000000298023224;
+select -ne :initialShadingGroup;
+	setAttr -s 7 ".dsm";
+	setAttr ".ro" yes;
+	setAttr -s 4 ".gn";
+select -ne :initialParticleSE;
+	setAttr ".ro" yes;
+select -ne :defaultRenderGlobals;
+	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
+	setAttr ".ren" -type "string" "arnold";
+	setAttr ".dss" -type "string" "lambert1";
+select -ne :defaultResolution;
+	setAttr ".pa" 1;
+select -ne :defaultColorMgtGlobals;
+	setAttr ".cfe" yes;
+	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya-legacy/config.ocio";
+	setAttr ".vtn" -type "string" "sRGB gamma (legacy)";
+	setAttr ".vn" -type "string" "sRGB gamma";
+	setAttr ".dn" -type "string" "legacy";
+	setAttr ".wsn" -type "string" "scene-linear Rec 709/sRGB";
+	setAttr ".ovt" no;
+	setAttr ".povt" no;
+	setAttr ".otn" -type "string" "sRGB gamma (legacy)";
+	setAttr ".potn" -type "string" "sRGB gamma (legacy)";
+select -ne :hardwareRenderGlobals;
+	setAttr ".ctrs" 256;
+	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
+connectAttr "groupId1.id" "pSphereShape1.iog.og[0].gid";
+connectAttr ":initialShadingGroup.mwc" "pSphereShape1.iog.og[0].gco";
+connectAttr "groupParts1.og" "pSphereShape1.i";
+connectAttr "groupId2.id" "pSphereShape1.ciog.cog[0].cgid";
+connectAttr "groupId3.id" "pCubeShape1.iog.og[0].gid";
+connectAttr ":initialShadingGroup.mwc" "pCubeShape1.iog.og[0].gco";
+connectAttr "groupParts2.og" "pCubeShape1.i";
+connectAttr "groupId4.id" "pCubeShape1.ciog.cog[0].cgid";
+connectAttr "polyCBoolOp1.out" "pSphere2Shape.i";
+connectAttr "groupId5.id" "pSphere2Shape.ciog.cog[0].cgid";
+connectAttr "polyMergeVert33.out" "polySurfaceShape1.i";
+relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
+connectAttr "layerManager.dli[0]" "defaultLayer.id";
+connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
+connectAttr "pSphereShape1.o" "polyCBoolOp1.ip[0]";
+connectAttr "pCubeShape1.o" "polyCBoolOp1.ip[1]";
+connectAttr "pSphereShape1.wm" "polyCBoolOp1.im[0]";
+connectAttr "pCubeShape1.wm" "polyCBoolOp1.im[1]";
+connectAttr "polySphere1.out" "groupParts1.ig";
+connectAttr "groupId1.id" "groupParts1.gi";
+connectAttr "polyCube1.out" "groupParts2.ig";
+connectAttr "groupId3.id" "groupParts2.gi";
+connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drivers"
+		 -na;
+connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
+connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
+connectAttr "polyCreateFace1.out" "polyAppendVertex1.ip";
+connectAttr "polyTweak1.out" "polyExtrudeEdge1.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge1.mp";
+connectAttr "polyAppendVertex1.out" "polyTweak1.ip";
+connectAttr "polyTweak2.out" "polyMergeVert1.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert1.mp";
+connectAttr "polyExtrudeEdge1.out" "polyTweak2.ip";
+connectAttr "polyTweak3.out" "polyAppendVertex2.ip";
+connectAttr "polyMergeVert1.out" "polyTweak3.ip";
+connectAttr "polyAppendVertex2.out" "polyAppendVertex3.ip";
+connectAttr "polyAppendVertex3.out" "polyAppendVertex4.ip";
+connectAttr "polyAppendVertex4.out" "polyAppendVertex5.ip";
+connectAttr "polyAppendVertex5.out" "polyAppendVertex6.ip";
+connectAttr "polyAppendVertex6.out" "polyAppendVertex7.ip";
+connectAttr "polyAppendVertex7.out" "polyAppendVertex8.ip";
+connectAttr "polyTweak4.out" "polyAppendVertex9.ip";
+connectAttr "polyAppendVertex8.out" "polyTweak4.ip";
+connectAttr "polyAppendVertex9.out" "deleteComponent1.ig";
+connectAttr "deleteComponent1.og" "deleteComponent2.ig";
+connectAttr "deleteComponent2.og" "deleteComponent3.ig";
+connectAttr "deleteComponent3.og" "polyAppendVertex10.ip";
+connectAttr "polyAppendVertex10.out" "polyAppendVertex11.ip";
+connectAttr "polyAppendVertex11.out" "polyAppendVertex12.ip";
+connectAttr "polyAppendVertex12.out" "polyAppendVertex13.ip";
+connectAttr "polyAppendVertex13.out" "polyAppendVertex14.ip";
+connectAttr "polyAppendVertex14.out" "polyAppendVertex15.ip";
+connectAttr "polyAppendVertex15.out" "polyAppendVertex16.ip";
+connectAttr "polyTweak5.out" "polyAppendVertex17.ip";
+connectAttr "polyAppendVertex16.out" "polyTweak5.ip";
+connectAttr "polyAppendVertex17.out" "polyAppendVertex18.ip";
+connectAttr "polyAppendVertex18.out" "polyAppendVertex19.ip";
+connectAttr "polyTweak6.out" "polyAppendVertex20.ip";
+connectAttr "polyAppendVertex19.out" "polyTweak6.ip";
+connectAttr "polyAppendVertex20.out" "polyAppendVertex21.ip";
+connectAttr "polyAppendVertex21.out" "polyAppendVertex22.ip";
+connectAttr "polyAppendVertex22.out" "polyAppendVertex23.ip";
+connectAttr "polyAppendVertex23.out" "polyAppendVertex24.ip";
+connectAttr "polyAppendVertex24.out" "polyAppendVertex25.ip";
+connectAttr "polyTweak7.out" "polyAppendVertex26.ip";
+connectAttr "polyAppendVertex25.out" "polyTweak7.ip";
+connectAttr "polyAppendVertex26.out" "polyAppendVertex27.ip";
+connectAttr "polyAppendVertex27.out" "polyAppendVertex28.ip";
+connectAttr "polyAppendVertex28.out" "polyAppendVertex29.ip";
+connectAttr "polyTweak8.out" "polyAppendVertex30.ip";
+connectAttr "polyAppendVertex29.out" "polyTweak8.ip";
+connectAttr "polyAppendVertex30.out" "polyAppendVertex31.ip";
+connectAttr "polyTweak9.out" "polyAppendVertex32.ip";
+connectAttr "polyAppendVertex31.out" "polyTweak9.ip";
+connectAttr "polyAppendVertex32.out" "polyAppendVertex33.ip";
+connectAttr "polyAppendVertex33.out" "polyAppendVertex34.ip";
+connectAttr "polyAppendVertex34.out" "polyAppendVertex35.ip";
+connectAttr "polyTweak10.out" "polyAppendVertex36.ip";
+connectAttr "polyAppendVertex35.out" "polyTweak10.ip";
+connectAttr "polyAppendVertex36.out" "polyAppendVertex37.ip";
+connectAttr "polyTweak11.out" "polyAppendVertex38.ip";
+connectAttr "polyAppendVertex37.out" "polyTweak11.ip";
+connectAttr "polyTweak12.out" "polyAppendVertex39.ip";
+connectAttr "polyAppendVertex38.out" "polyTweak12.ip";
+connectAttr "polyAppendVertex39.out" "polyAppendVertex40.ip";
+connectAttr "polyAppendVertex40.out" "polyAppendVertex41.ip";
+connectAttr "polyAppendVertex41.out" "polyAppendVertex42.ip";
+connectAttr "polyTweak13.out" "polyAppendVertex43.ip";
+connectAttr "polyAppendVertex42.out" "polyTweak13.ip";
+connectAttr "polyAppendVertex43.out" "polyAppendVertex44.ip";
+connectAttr "polyAppendVertex44.out" "polyAppendVertex45.ip";
+connectAttr "polyAppendVertex45.out" "polyAppendVertex46.ip";
+connectAttr "polyAppendVertex46.out" "polyAppendVertex47.ip";
+connectAttr "polyAppendVertex47.out" "polyAppendVertex48.ip";
+connectAttr "polyAppendVertex48.out" "polyAppendVertex49.ip";
+connectAttr "polyTweak14.out" "polyAppendVertex50.ip";
+connectAttr "polyAppendVertex49.out" "polyTweak14.ip";
+connectAttr "polyAppendVertex50.out" "polyAppendVertex51.ip";
+connectAttr "polyAppendVertex51.out" "polyAppendVertex52.ip";
+connectAttr "polyAppendVertex52.out" "polyAppendVertex53.ip";
+connectAttr "polyAppendVertex53.out" "polyAppendVertex54.ip";
+connectAttr "polyAppendVertex54.out" "polyAppendVertex55.ip";
+connectAttr "polyAppendVertex55.out" "polyAppendVertex56.ip";
+connectAttr "polyAppendVertex56.out" "polyAppendVertex57.ip";
+connectAttr "polyAppendVertex57.out" "polyAppendVertex58.ip";
+connectAttr "polyAppendVertex58.out" "polyAppendVertex59.ip";
+connectAttr "polyAppendVertex59.out" "polyAppendVertex60.ip";
+connectAttr "polyAppendVertex60.out" "polyAppendVertex61.ip";
+connectAttr "polyAppendVertex61.out" "polyAppendVertex62.ip";
+connectAttr "polyAppendVertex62.out" "polyAppendVertex63.ip";
+connectAttr "polyAppendVertex63.out" "polyAppendVertex64.ip";
+connectAttr "polyAppendVertex64.out" "polyAppendVertex65.ip";
+connectAttr "polyAppendVertex65.out" "polyAppendVertex66.ip";
+connectAttr "polyAppendVertex66.out" "polyAppendVertex67.ip";
+connectAttr "polyTweak15.out" "polyAppendVertex68.ip";
+connectAttr "polyAppendVertex67.out" "polyTweak15.ip";
+connectAttr "polyAppendVertex68.out" "polyAppendVertex69.ip";
+connectAttr "polyAppendVertex69.out" "polyAppendVertex70.ip";
+connectAttr "polyAppendVertex70.out" "polyAppendVertex71.ip";
+connectAttr "polyAppendVertex71.out" "polyAppendVertex72.ip";
+connectAttr "polyTweak16.out" "polyAppendVertex73.ip";
+connectAttr "polyAppendVertex72.out" "polyTweak16.ip";
+connectAttr "polyAppendVertex73.out" "polyAppendVertex74.ip";
+connectAttr "polyAppendVertex74.out" "polyAppendVertex75.ip";
+connectAttr "polyAppendVertex75.out" "polyAppendVertex76.ip";
+connectAttr "polyAppendVertex76.out" "polyAppendVertex77.ip";
+connectAttr "polyAppendVertex77.out" "polyAppendVertex78.ip";
+connectAttr "polyAppendVertex78.out" "polyAppendVertex79.ip";
+connectAttr "polyAppendVertex79.out" "polyAppendVertex80.ip";
+connectAttr "polyAppendVertex80.out" "polyAppendVertex81.ip";
+connectAttr "polyAppendVertex81.out" "polyExtrudeEdge2.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge2.mp";
+connectAttr "polyTweak17.out" "polyMergeVert2.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert2.mp";
+connectAttr "polyExtrudeEdge2.out" "polyTweak17.ip";
+connectAttr "polyTweak18.out" "polyAppendVertex82.ip";
+connectAttr "polyMergeVert2.out" "polyTweak18.ip";
+connectAttr "polyAppendVertex82.out" "polyAppendVertex83.ip";
+connectAttr "polyTweak19.out" "polyExtrudeEdge3.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge3.mp";
+connectAttr "polyAppendVertex83.out" "polyTweak19.ip";
+connectAttr "polyTweak20.out" "polyMergeVert3.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert3.mp";
+connectAttr "polyExtrudeEdge3.out" "polyTweak20.ip";
+connectAttr "polyTweak21.out" "polyExtrudeEdge4.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge4.mp";
+connectAttr "polyMergeVert3.out" "polyTweak21.ip";
+connectAttr "polyTweak22.out" "polyMergeVert4.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert4.mp";
+connectAttr "polyExtrudeEdge4.out" "polyTweak22.ip";
+connectAttr "polyTweak23.out" "polyExtrudeEdge5.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge5.mp";
+connectAttr "polyMergeVert4.out" "polyTweak23.ip";
+connectAttr "polyTweak24.out" "polyMergeVert5.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert5.mp";
+connectAttr "polyExtrudeEdge5.out" "polyTweak24.ip";
+connectAttr "polyMergeVert5.out" "polyExtrudeEdge6.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge6.mp";
+connectAttr "polyTweak25.out" "polyMergeVert6.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert6.mp";
+connectAttr "polyExtrudeEdge6.out" "polyTweak25.ip";
+connectAttr "polyTweak26.out" "polyExtrudeEdge7.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge7.mp";
+connectAttr "polyMergeVert6.out" "polyTweak26.ip";
+connectAttr "polyTweak27.out" "polyMergeVert7.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert7.mp";
+connectAttr "polyExtrudeEdge7.out" "polyTweak27.ip";
+connectAttr "polyMergeVert7.out" "polyExtrudeEdge8.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge8.mp";
+connectAttr "polyTweak28.out" "polyMergeVert8.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert8.mp";
+connectAttr "polyExtrudeEdge8.out" "polyTweak28.ip";
+connectAttr "polyMergeVert8.out" "polyExtrudeEdge9.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge9.mp";
+connectAttr "polyTweak29.out" "polyMergeVert9.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert9.mp";
+connectAttr "polyExtrudeEdge9.out" "polyTweak29.ip";
+connectAttr "polyMergeVert9.out" "polyExtrudeEdge10.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge10.mp";
+connectAttr "polyTweak30.out" "polyMergeVert10.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert10.mp";
+connectAttr "polyExtrudeEdge10.out" "polyTweak30.ip";
+connectAttr "polyMergeVert10.out" "polyExtrudeEdge11.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge11.mp";
+connectAttr "polyTweak31.out" "polyExtrudeEdge12.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge12.mp";
+connectAttr "polyExtrudeEdge11.out" "polyTweak31.ip";
+connectAttr "polyTweak32.out" "polyExtrudeEdge13.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge13.mp";
+connectAttr "polyExtrudeEdge12.out" "polyTweak32.ip";
+connectAttr "polyTweak33.out" "polyExtrudeEdge14.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge14.mp";
+connectAttr "polyExtrudeEdge13.out" "polyTweak33.ip";
+connectAttr "polyTweak34.out" "polyMergeVert11.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert11.mp";
+connectAttr "polyExtrudeEdge14.out" "polyTweak34.ip";
+connectAttr "polyTweak35.out" "polyExtrudeEdge15.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge15.mp";
+connectAttr "polyMergeVert11.out" "polyTweak35.ip";
+connectAttr "polyTweak36.out" "polyExtrudeEdge16.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge16.mp";
+connectAttr "polyExtrudeEdge15.out" "polyTweak36.ip";
+connectAttr "polyTweak37.out" "polyMergeVert12.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert12.mp";
+connectAttr "polyExtrudeEdge16.out" "polyTweak37.ip";
+connectAttr "polyMergeVert12.out" "polyExtrudeEdge17.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge17.mp";
+connectAttr "polyTweak38.out" "polyMergeVert13.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert13.mp";
+connectAttr "polyExtrudeEdge17.out" "polyTweak38.ip";
+connectAttr "polyMergeVert13.out" "polyExtrudeEdge18.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge18.mp";
+connectAttr "polyTweak39.out" "polyMergeVert14.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert14.mp";
+connectAttr "polyExtrudeEdge18.out" "polyTweak39.ip";
+connectAttr "polyTweak40.out" "polyExtrudeEdge19.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge19.mp";
+connectAttr "polyMergeVert14.out" "polyTweak40.ip";
+connectAttr "polyTweak41.out" "polyMergeVert15.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert15.mp";
+connectAttr "polyExtrudeEdge19.out" "polyTweak41.ip";
+connectAttr "polyMergeVert15.out" "polyExtrudeEdge20.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge20.mp";
+connectAttr "polyTweak42.out" "polyMergeVert16.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert16.mp";
+connectAttr "polyExtrudeEdge20.out" "polyTweak42.ip";
+connectAttr "polyMergeVert16.out" "polyExtrudeEdge21.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge21.mp";
+connectAttr "polyTweak43.out" "polyMergeVert17.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert17.mp";
+connectAttr "polyExtrudeEdge21.out" "polyTweak43.ip";
+connectAttr "polyMergeVert17.out" "polyExtrudeEdge22.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge22.mp";
+connectAttr "polyTweak44.out" "polyMergeVert18.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert18.mp";
+connectAttr "polyExtrudeEdge22.out" "polyTweak44.ip";
+connectAttr "polyMergeVert18.out" "polyExtrudeEdge23.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge23.mp";
+connectAttr "polyTweak45.out" "polyMergeVert19.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert19.mp";
+connectAttr "polyExtrudeEdge23.out" "polyTweak45.ip";
+connectAttr "polyMergeVert19.out" "polyExtrudeEdge24.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge24.mp";
+connectAttr "polyTweak46.out" "polyMergeVert20.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert20.mp";
+connectAttr "polyExtrudeEdge24.out" "polyTweak46.ip";
+connectAttr "polyMergeVert20.out" "polyExtrudeEdge25.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge25.mp";
+connectAttr "polyTweak47.out" "polyMergeVert21.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert21.mp";
+connectAttr "polyExtrudeEdge25.out" "polyTweak47.ip";
+connectAttr "polyMergeVert21.out" "polyExtrudeEdge26.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge26.mp";
+connectAttr "polyTweak48.out" "polyMergeVert22.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert22.mp";
+connectAttr "polyExtrudeEdge26.out" "polyTweak48.ip";
+connectAttr "polyMergeVert22.out" "polyExtrudeEdge27.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge27.mp";
+connectAttr "polyTweak49.out" "polyMergeVert23.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert23.mp";
+connectAttr "polyExtrudeEdge27.out" "polyTweak49.ip";
+connectAttr "polyTweak50.out" "polyMergeVert24.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert24.mp";
+connectAttr "polyMergeVert23.out" "polyTweak50.ip";
+connectAttr "polyTweak51.out" "polyExtrudeEdge28.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge28.mp";
+connectAttr "polyMergeVert24.out" "polyTweak51.ip";
+connectAttr "polyTweak52.out" "polyMergeVert25.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert25.mp";
+connectAttr "polyExtrudeEdge28.out" "polyTweak52.ip";
+connectAttr "polyTweak53.out" "polyExtrudeEdge29.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge29.mp";
+connectAttr "polyMergeVert25.out" "polyTweak53.ip";
+connectAttr "polyTweak54.out" "polyMergeVert26.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert26.mp";
+connectAttr "polyExtrudeEdge29.out" "polyTweak54.ip";
+connectAttr "polyTweak55.out" "polyAppendVertex84.ip";
+connectAttr "polyMergeVert26.out" "polyTweak55.ip";
+connectAttr "polyAppendVertex84.out" "polyAppendVertex85.ip";
+connectAttr "polyAppendVertex85.out" "polyAppendVertex86.ip";
+connectAttr "polyAppendVertex86.out" "polyAppendVertex87.ip";
+connectAttr "polyAppendVertex87.out" "polyExtrudeEdge30.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge30.mp";
+connectAttr "polyTweak56.out" "polyMergeVert27.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert27.mp";
+connectAttr "polyExtrudeEdge30.out" "polyTweak56.ip";
+connectAttr "polyTweak57.out" "polyMergeVert28.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert28.mp";
+connectAttr "polyMergeVert27.out" "polyTweak57.ip";
+connectAttr "polyMergeVert28.out" "polyExtrudeEdge31.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge31.mp";
+connectAttr "polyTweak58.out" "polyMergeVert29.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert29.mp";
+connectAttr "polyExtrudeEdge31.out" "polyTweak58.ip";
+connectAttr "polyTweak59.out" "polyMergeVert30.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert30.mp";
+connectAttr "polyMergeVert29.out" "polyTweak59.ip";
+connectAttr "polyTweak60.out" "polyMergeVert31.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert31.mp";
+connectAttr "polyMergeVert30.out" "polyTweak60.ip";
+connectAttr "polyMergeVert31.out" "polyExtrudeEdge32.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge32.mp";
+connectAttr "polyTweak61.out" "polyExtrudeEdge33.ip";
+connectAttr "polySurfaceShape1.wm" "polyExtrudeEdge33.mp";
+connectAttr "polyExtrudeEdge32.out" "polyTweak61.ip";
+connectAttr "polyTweak62.out" "polyMergeVert32.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert32.mp";
+connectAttr "polyExtrudeEdge33.out" "polyTweak62.ip";
+connectAttr "polyTweak63.out" "polyMergeVert33.ip";
+connectAttr "polySurfaceShape1.wm" "polyMergeVert33.mp";
+connectAttr "polyMergeVert32.out" "polyTweak63.ip";
+connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
+connectAttr "pSphereShape1.iog.og[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "pSphereShape1.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "pCubeShape1.iog.og[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "pCubeShape1.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "pSphere2Shape.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "pSphere2Shape.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "polySurfaceShape1.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "groupId1.msg" ":initialShadingGroup.gn" -na;
+connectAttr "groupId2.msg" ":initialShadingGroup.gn" -na;
+connectAttr "groupId3.msg" ":initialShadingGroup.gn" -na;
+connectAttr "groupId4.msg" ":initialShadingGroup.gn" -na;
+// End of BoolStart.ma
