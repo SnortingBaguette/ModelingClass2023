@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: starship_unwrapped.ma
-//Last modified: Thu, Nov 02, 2023 04:15:19 PM
+//Last modified: Thu, Nov 02, 2023 04:15:24 PM
 //Codeset: 1252
 requires maya "2024";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.3.1.1";
@@ -10,7 +10,7 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202304191415-7fa20164c6";
 fileInfo "osv" "Windows 10 Home v2009 (Build: 19045)";
-fileInfo "UUID" "5EDEF731-466C-D83B-2BA5-848E1FF06A00";
+fileInfo "UUID" "22C7BFFC-43FC-99E2-D558-A5916616580F";
 createNode transform -s -n "persp";
 	rename -uid "51247E1D-41CB-393A-3072-FAA5758FCB3F";
 	setAttr ".v" no;
